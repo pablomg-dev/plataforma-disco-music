@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Add Album</title>
+  <link rel="stylesheet" href="../styles.css" />
+  <link rel="icon" href="./images/favicon.ico" />
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body>
+
+  <div class="flex flex-row">
+
+    <div class="bg-black h-screen w-64 text-red-600 text-center">
+
+      <img src="images/user-profile-image.webp" alt="imagen usuario" class="w-28 mx-auto rounded-full mt-8">
+
+      <div class="border-b border-orange-700 py-2.5 font-medium">Chris C.</div>
+
+      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
+        <a href="">Other Albums</a>
+      </div>
+
+      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
+        <a href="./editAlbum.html">Edit Album</a>
+      </div>
+
+      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
+        <a href="./addSong.html">Add Song</a>
+      </div>
+
+      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
+        <a href="../index.html">Log Out</a>
+      </div>
+
+    </div>
+
+    <div class="h-screen w-full bg-[url('images/band3.png')] bg-center bg-cover bg-no-repeat overflow-auto">
+
+      <h3 class="text-2xl font-semibold text-black text-center mt-10 mb-5 tracking-wider">Add Album</h3>
+
+      <div class="flex justify-center text-center">
+
+        <form action="" method="post" class="w-1/2">
+
+          <label class="block font-semibold">Tittle
+
+            <input type="text" name="tittle" required
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+
+          </label>
+
+          <label class="block font-semibold">Release Year
+
+            <input type="number" name="yearOfRelease" required
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+
+          </label>
+
+          <label class="block font-semibold">Description
+
+            <textarea name="description" cols="30" rows="10" name="description" required 
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"></textarea>
+
+          </label>
+
+          <label class="block font-semibold">Add Image (URL)
+
+            <input type="url" name="cover" placeholder="https://www..." required
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+
+          </label>
+
+          <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700">Add Album</button>
+
+        </form>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>
