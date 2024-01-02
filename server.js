@@ -3,8 +3,17 @@ const app = express();
 const cookieParser = require("cookie-parser");
 const path = require("path");
 const mongoose = require("mongoose");
-const url = "mongodb+srv://username:password@curso-intro.ee1ghra.mongodb.net/?retryWrites=true&w=majority";
-const PORT = 3000;
+
+// Usamos variables de entorno para ocultar información sensible
+const dotenv = require("dotenv");
+dotenv.config();
+
+// Guardamos en constantes las variables de entorno para poder utilizarlas
+const PORT = process.env.PORT;
+const dbUser = process.env.USER_MONGO;
+const password = process.env.PASSWORD_MONGO;
+
+const url = `mongodb+srv://${dbUser}:${password}@curso-intro.ee1ghra.mongodb.net/?retryWrites=true&w=majority`;
 
 // Requerimos las rutas de la carpeta routes
 const routes = require("./routes/index");
@@ -23,7 +32,7 @@ const connectMongo = async () => {
     await mongoose.connect(url);
     app.listen(PORT, () => {
       console.log(
-        "Server listening on port 3000 and database connected");
+        `Server listening on port ${PORT} and database connected`);
     });
   } catch (error) {
     console.log(error);
