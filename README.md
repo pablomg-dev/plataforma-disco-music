@@ -1,4 +1,4 @@
-## Proyecto final - Tu banda preferida musical - Curso Introductorio Fullstack de Plataforma 5. :tw-1f3b8: :tw-1f3b6: :tw-1f3a4:
+## Proyecto final - Tu banda preferida musical - Curso Introductorio Fullstack de Plataforma 5. 🎸🎶🎧
 
 #### Descripción:
 El proyecto esta basado en una de mis bandas favoritas, llamada Audioslave.
@@ -41,14 +41,14 @@ Muchas gracias a todo el equipo de Plataforma 5, al profe Gerardo Burgos y a tod
 
 ------------
 
-##### Autor: Pablo Martín González. :tw-1f4bb:
+##### Autor: Pablo Martín González. 👩‍💻
 
 ------------
 
 
 ------------
 
-## Final project - Your favorite musical band - Platform 5 Fullstack Introductory Course. :tw-1f3b8: :tw-1f3b6: :tw-1f3a4:
+## Final project - Your favorite musical band - Platform 5 Fullstack Introductory Course. 🎸🎶🎧
 
 #### Description:
 The project is based on one of my favorite bands, called Audioslave.
@@ -89,4 +89,4 @@ PORT=
 Thank you very much to the entire Platform 5 team, to teacher Gerardo Burgo and to all my colleagues from the October-afternoon commission (2023) for participating in the classes.
 
 ------------
-##### Author Dev: Pablo Martín González. :tw-1f4bb:
+##### Author Dev: Pablo Martín González. 👩‍💻
