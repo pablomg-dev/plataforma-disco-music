@@ -41,7 +41,7 @@ Muchas gracias a todo el equipo de Plataforma 5, al profe Gerardo Burgos y a tod
 
 ------------
 
-##### Autor: Pablo Martín González. 👩‍💻
+##### Autor: Pablo M. González. 👩‍💻
 
 ------------
 
@@ -89,4 +89,4 @@ PORT=
 Thank you very much to the entire Platform 5 team, to teacher Gerardo Burgo and to all my colleagues from the October-afternoon commission (2023) for participating in the classes.
 
 ------------
-##### Author Dev: Pablo Martín González. 👩‍💻
+##### Author Dev: Pablo M. González. 👩‍💻
