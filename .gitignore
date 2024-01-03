@@ -1,3 +1,4 @@
 node_modules
 .env
 tailwind.config.js
+package-lock.json

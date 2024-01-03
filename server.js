@@ -33,6 +33,9 @@ app.use(
   }),
 );
 
+// Nos pide Render para chequear la app
+app.use("/health", (req, res) => res.sendStatus(200));
+
 // Nos lleva a las rutas
 app.use("/", routes);
 
