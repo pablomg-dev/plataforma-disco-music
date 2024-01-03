@@ -19,6 +19,6 @@
     "jsonwebtoken": "^9.0.2",
     "mongoose": "^8.0.1",
     "nodemon": "^3.0.1",
-    "parser": "^0.1.4"
+    "parser": "^0.4"
   }
 }
