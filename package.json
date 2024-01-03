@@ -20,5 +20,8 @@
     "mongoose": "^8.0.1",
     "nodemon": "^3.0.1",
     "parser": "^0.1.4"
+  },
+  "engines": {
+    "node": ">=0.4"
   }
 }
