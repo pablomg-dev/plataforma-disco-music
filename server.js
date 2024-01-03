@@ -21,9 +21,19 @@ const routes = require("./routes/index");
 app.use(express.json());
 app.use(cookieParser());
 
-app.use(express.static(path.join(__dirname, "public")));
+// app.use(express.static(path.join(__dirname, "public")));
 
-// nos lleva a las rutas
+app.use(
+  express.static("public", {
+    setHeaders: (res, path) => {
+      if (path.endsWith(".js")) {
+        res.setHeader("Content-Type", "application/javascript");
+      }
+    },
+  }),
+);
+
+// Nos lleva a las rutas
 app.use("/", routes);
 
 // Conectamos con la Base de Datos
