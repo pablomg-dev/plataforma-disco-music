@@ -1,5 +1,7 @@
 ## Proyecto final - Tu banda preferida musical - Curso Introductorio Fullstack de Plataforma 5. 🎸🎶🎧
 
+------------
+
 #### Descripción:
 El proyecto esta basado en una de mis bandas favoritas, llamada Audioslave.
 El objetivo final es que cualquier usuario pueda registrarse, que pueda editar los albunes y canciones de la banda. Asi como tambien poder agregar nuevos elementos, tambien la posibilidad de escuchar en streaming algunas canciones o la posibilidad de enlazarlos a algun video en youtube.
