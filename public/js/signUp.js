@@ -10,8 +10,8 @@ const userRegister = async (e) => {
     e.preventDefault();
     getInputValues();
     try {
-        const response = await axios.post(`http://localhost:3000/createuser`, objectToSend);
-        window.location.href = "https://audioslave-fanpage-p5.onrender.com/html/login.html";
+        const response = await axios.post(`../../createuser`, objectToSend);
+        window.location.href = `./login.html`;
     }
 
     catch (error) {

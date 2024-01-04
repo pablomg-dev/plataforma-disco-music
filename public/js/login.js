@@ -10,8 +10,8 @@ const loginUser = async (e) => {
     e.preventDefault()
     getInputValues()
     try {
-        const response = await axios.post(`http://localhost:3000/login`, objectToSend);
-        window.location.href = "http://localhost:3000/";
+        const response = await axios.post(`../login`, objectToSend);
+        window.location.href = `../html/home.html`;
     }
 
     catch (error) {
