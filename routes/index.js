@@ -95,22 +95,15 @@ router.get("/user/:id", async (req, res) => {
   }
 });
 
-// Editar los datos de un usuario
+// Editar los datos de un usuario.
 router.put("/user/edit/:id", async (req, res) => {
   try {
     const usuario = await User.findByIdAndUpdate(req.params.id, req.body, {
       new: true,
     });
-    let response = await User.findById(req.params.id);
-    res.status(200).send({
-      user: {
-        name: response.name,
-        lastName: response.lastName,
-        email: response.email,
-      },
-    });
+    res.status(200).send(usuario);
   } catch (error) {
-    res.status(500).send({ "Error editing user": error });
+    res.status(500).send({ "error al editar el usuario": error });
   }
 });
 

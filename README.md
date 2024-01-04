@@ -4,6 +4,8 @@
 El proyecto esta basado en una de mis bandas favoritas, llamada Audioslave.
 El objetivo final es que cualquier usuario pueda registrarse, que pueda editar los albunes y canciones de la banda. Asi como tambien poder agregar nuevos elementos, tambien la posibilidad de escuchar en streaming algunas canciones o la posibilidad de enlazarlos a algun video en youtube.
 
+##### https://audioslave-fanpage-p5.onrender.com/ (enlace al deployment)
+
 #### Funcionalidades principales:
 Los usuario se pueden registrar para tener su propia cuenta personal.
 Tienen la posibilidad de agregar, actualiza, eliminar album de bandas.
@@ -38,6 +40,8 @@ Muchas gracias a todo el equipo de Plataforma 5, al profe Gerardo Burgos y a tod
 #### Description:
 The project is based on one of my favorite bands, called Audioslave.
 The ultimate goal is that any user can register, who can edit the band's albums and songs. As well as being able to add new elements, also the possibility of streaming some songs or the possibility of linking them to a video on YouTube.
+
+##### https://audioslave-fanpage-p5.onrender.com/ (link to deployment)
 
 #### Main features:
 Users can register to have their own personal account.
