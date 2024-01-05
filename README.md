@@ -25,7 +25,9 @@ Pueden comprar tickets para los próximos recitales. (ficticio)
 -Configurar las variables de entorno en un archivo .env:
 
 USER_MONGO=
+
 PASSWORD_MONGO=
+
 PORT=
 
 #### Agradecimientos:
@@ -62,7 +64,9 @@ You must have a database in MongoDB.
 -Set environment variables in a .env file:
 
 USER_MONGO=
+
 PASSWORD_MONGO=
+
 PORT=
 
 #### Agradecimientos:
