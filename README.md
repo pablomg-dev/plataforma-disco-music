@@ -1,4 +1,5 @@
 ## Proyecto final - Tu banda preferida musical - Curso Introductorio Fullstack de Plataforma 5. 🎸🎶🎧
+![logo-p5](https://i.imgur.com/zuBSE5n.jpg)
 
 #### Descripción:
 El proyecto esta basado en una de mis bandas favoritas, llamada Audioslave.
@@ -25,7 +26,9 @@ Pueden comprar tickets para los próximos recitales. (ficticio)
 -Configurar las variables de entorno en un archivo .env:
 
 USER_MONGO=
+
 PASSWORD_MONGO=
+
 PORT=
 
 #### Agradecimientos:
@@ -36,6 +39,7 @@ Muchas gracias a todo el equipo de Plataforma 5, al profe Gerardo Burgos y a tod
 ------------
 
 ## Final project - Your favorite musical band - Platform 5 - Fullstack Introductory Course. 🎸🎶🎧
+![logo-p5](https://i.imgur.com/zuBSE5n.jpg)
 
 #### Description:
 The project is based on one of my favorite bands, called Audioslave.
@@ -62,14 +66,13 @@ You must have a database in MongoDB.
 -Set environment variables in a .env file:
 
 USER_MONGO=
+
 PASSWORD_MONGO=
+
 PORT=
 
 #### Agradecimientos:
 Thank you very much to the entire Platform 5 team, to teacher Gerardo Burgo and to all my colleagues from the October-afternoon commission (2023) for participating in the classes.
 
-<<<<<<< HEAD
 ##### Author: Pablo M. González. 👩‍💻
 =======
-##### Author: Pablo M. González. 👩‍💻
->>>>>>> 47503f99da7f08b108c4c71dd7b70334528162e4
