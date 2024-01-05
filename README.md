@@ -68,8 +68,5 @@ PORT=
 #### Agradecimientos:
 Thank you very much to the entire Platform 5 team, to teacher Gerardo Burgo and to all my colleagues from the October-afternoon commission (2023) for participating in the classes.
 
-<<<<<<< HEAD
 ##### Author: Pablo M. González. 👩‍💻
 =======
-##### Author: Pablo M. González. 👩‍💻
->>>>>>> 47503f99da7f08b108c4c71dd7b70334528162e4
