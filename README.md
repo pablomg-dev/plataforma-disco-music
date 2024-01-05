@@ -1,4 +1,4 @@
-## Proyecto final - Tu banda preferida musical - Curso Introductorio Fullstack de Plataforma 5. 🎸🎶🎧
+## Proyecto final - Tu banda preferida musical - Curso Introductorio Fullstack de Plataforma 5. 🎸🎶🎧![logo-p5](https://i.imgur.com/zuBSE5n.jpg)
 
 #### Descripción:
 El proyecto esta basado en una de mis bandas favoritas, llamada Audioslave.
@@ -37,7 +37,7 @@ Muchas gracias a todo el equipo de Plataforma 5, al profe Gerardo Burgos y a tod
 
 ------------
 
-## Final project - Your favorite musical band - Platform 5 - Fullstack Introductory Course. 🎸🎶🎧
+## Final project - Your favorite musical band - Platform 5 ![logo-p5](https://i.imgur.com/zuBSE5n.jpg) - Fullstack Introductory Course. 🎸🎶🎧
 
 #### Description:
 The project is based on one of my favorite bands, called Audioslave.
