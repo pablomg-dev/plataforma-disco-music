@@ -19,7 +19,7 @@ const hashPassword = async (password) => {
 
 // RUTAS
 
-// Login del usuario
+// Rutap para el Login del usuario.
 router.post("/login", async(req, res) => {
   try {
     const email = req.body.email;
@@ -40,7 +40,7 @@ router.post("/login", async(req, res) => {
   }
 })
 
-// Ruta para el logout
+// Ruta para el logout.
 router.post("/logout", async (req, res) => {
   try {
     res.clearCookie("token");
@@ -50,7 +50,7 @@ router.post("/logout", async (req, res) => {
   }
 });
 
-// Restringir el acceso a quienes no se loguean
+// Ruta para restringir el acceso a quienes no se loguean.
 router.get("/me", (req, res) => {
   try {
     const token = req.cookies.token;
@@ -61,7 +61,7 @@ router.get("/me", (req, res) => {
   }
 });
 
-// Crear un usuario
+// Ruta para crear un usuario.
 router.post("/createuser", async (req, res) => {
   const { name, lastName, email, password } = req.body;
   const hashed = await hashPassword(password);
@@ -79,7 +79,7 @@ router.post("/createuser", async (req, res) => {
   }
 });
 
-// Recibir un id por params y retorne la data del usuario nuevamente, excluyendo la contraseña
+// Ruta para recibir un id por params y retorne la data del usuario nuevamente, excluyendo la contraseña.
 router.get("/user/:id", async (req, res) => {
   try {
     let response = await User.findById(req.params.id);
@@ -95,7 +95,7 @@ router.get("/user/:id", async (req, res) => {
   }
 });
 
-// Editar los datos de un usuario.
+// Ruta para editar los datos de un usuario.
 router.put("/user/edit/:id", async (req, res) => {
   try {
     const usuario = await User.findByIdAndUpdate(req.params.id, req.body, {
@@ -107,7 +107,27 @@ router.put("/user/edit/:id", async (req, res) => {
   }
 });
 
-// Agregar un album
+// Ruta que devuelve todos los albums.
+router.get("/album/all", async (req, res) => {
+  try {
+    let albums = await Album.find();
+    res.status(200).send(albums);
+  } catch (error) {
+    res.status(500).send({ "error request all albums": error });
+  }
+});
+
+// Ruta que devuelve la información de un album especifíco.
+router.get("/album/:id", async (req, res) => {
+  try {
+    let album = await Album.findById(req.params.id);
+    res.status(200).send(album);
+  } catch (error) {
+    res.status(500).send({ "error when requesting specific album": error });
+  }
+});
+
+// Ruta para agregar un album.
 router.post("/album/add", async (req, res) => {
   try {
     let album = await Album.create(req.body);
@@ -117,7 +137,7 @@ router.post("/album/add", async (req, res) => {
   }
 });
 
-// Editar un album
+// Ruta para editar un album.
 router.put("/album/:id", async (req, res) => {
   try {
     const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
@@ -129,7 +149,17 @@ router.put("/album/:id", async (req, res) => {
   }
 });
 
-// Una ruta para agregar una canción del album
+// Ruta para eliminar un album.
+router.delete("/album/:idAlbum", async (req, res) => {
+  try {
+    await Album.findByIdAndDelete(req.params.idAlbum);
+    res.status(200).send("Album deleted successfully");
+  } catch (error) {
+    res.status(500).send({ "Error deleting album": error });
+  }
+});
+
+// Ruta para agregar una canción al album.
 router.put("/song/:idAlbum", async (req, res) => {
   try {
     let album = await Album.findById(req.params.idAlbum);
@@ -143,7 +173,7 @@ router.put("/song/:idAlbum", async (req, res) => {
   }
 });
 
-// Eliminar una canción del album
+// Ruta para eliminar una canción del album.
 router.put("/song/delete/:idAlbum", async (req, res) => {
   let idSong = req.query.idSong;
   try {
@@ -158,36 +188,6 @@ router.put("/song/delete/:idAlbum", async (req, res) => {
     res.status(200).send({ message: "Song deleted correctly" });
   } catch (error) {
     res.status(500).send(error);
-  }
-});
-
-// Devuelva todos los albums
-router.get("/album/all", async (req, res) => {
-  try {
-    let albums = await Album.find();
-    res.status(200).send(albums);
-  } catch (error) {
-    res.status(500).send({ "error request all albums": error });
-  }
-});
-
-// Devuelva la información de un album especifíco
-router.get("/album/:id", async (req, res) => {
-  try {
-    let album = await Album.findById(req.params.id);
-    res.status(200).send(album);
-  } catch (error) {
-    res.status(500).send({ "error when requesting specific album": error });
-  }
-});
-
-// Eliminar un album
-router.delete("/album/:idAlbum", async (req, res) => {
-  try {
-    await Album.findByIdAndDelete(req.params.idAlbum);
-    res.status(200).send("Album deleted successfully");
-  } catch (error) {
-    res.status(500).send({ "Error deleting album": error });
   }
 });
 
