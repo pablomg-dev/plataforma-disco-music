@@ -7,8 +7,8 @@ function getInputValues() {
 };
 
 const loginUser = async (e) => {
-    e.preventDefault()
-    getInputValues()
+    e.preventDefault();
+    getInputValues();
     try {
         const response = await axios.post(`../login`, objectToSend);
         window.location.href = `../html/home.html`;
