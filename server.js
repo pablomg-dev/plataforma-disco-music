@@ -31,13 +31,13 @@ app.use(
   }),
 );
 
-// Nos pide Render para chequear la app
+// Nos pide Render para chequear la App.
 app.use("/health", (req, res) => res.sendStatus(200));
 
 // Nos lleva a las rutas
 app.use("/", routes);
 
-// Conectamos con la Base de Datos
+// Conectamos con la Base de Datos.
 const connectMongo = async () => {
   try {
     await mongoose.connect(url);

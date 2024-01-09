@@ -1,11 +1,14 @@
+// Importamos las funciones onLoad y logOut
+import { onLoad } from "../utils/utils.js";
+import { logOut } from "../utils/utils.js";
+
+// Obtenemos los botones Edit Album y Add Song.
 const editAlbum = document.querySelector("#editAlbum");
 const addSong = document.querySelector("#addSong");
-const buttonLogout = document.querySelector("#logOut");
 
 // Agrego estilo a botones de la sidebar
 editAlbum.classList.add('cursor-pointer');
 addSong.classList.add('cursor-pointer');
-buttonLogout.classList.add('cursor-pointer');
 
 // Obtenemos el id del album y lo guardamos.
 const query = window.location.search.split("=");
@@ -57,7 +60,7 @@ function renderAlbum(album) {
     p.classList.add('text-black', 'mx-36', 'mb-5', 'text-justify', 'text-base');
     h2.classList.add('text-2xl', 'font-semibold', 'text-black', 'text-center', 'my-5', 'tracking-wider');
     // Agregamos la info de las canciones.
-    h1.textContent = album.tittle;
+    h1.textContent = album.title;
     p.textContent = album.description;
     h2.textContent = 'Songs';
     // Agregamos los elementos al HTML.
@@ -100,7 +103,7 @@ function renderSongs(album) {
     iconTrash.setAttribute('id', 'delete');
     // Agregamos la info de las canciones.
     spanSongNumber.textContent = `${numSong}-`;
-    spanSongTitle.textContent = album.tittle;
+    spanSongTitle.textContent = album.title;
     spanSongDuration.textContent = album.duration;
     numSong++;
     // Agregamos los elementos al HTML.
@@ -149,8 +152,11 @@ const deleteSong = async (album, song) => {
     }
   };
 
-// Agregamos un addEventListener con la funcion logOut.
-// buttonLogout.addEventListener("click", () => {
-//     logOut();
-//     window.location.href = `../index.html`;
-//   });
+// Obtenemos el button logout.
+const buttonLogout = document.querySelector("#logout");
+buttonLogout.classList.add('cursor-pointer');
+// Le agregamos un addEventListener y le aplicamos la función logOut.
+buttonLogout.addEventListener("click", () => {
+  logOut();
+  window.location.href = "../index.html";
+});

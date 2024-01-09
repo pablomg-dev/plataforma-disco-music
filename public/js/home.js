@@ -1,3 +1,8 @@
+// Importamos las funciones onLoad y logOut
+import { onLoad } from "../utils/utils.js";
+import { logOut } from "../utils/utils.js";
+
+
 // Función que toma el id del album a renderizar y se lo agregaremos como query param a la url.
 const redirect = (id) => { window.location.href = `./album.html?album=${id}` };
 
@@ -77,3 +82,25 @@ const deleteAlbum = async (album) => {
         console.log(error.message);
     }
 };
+
+// Obtenemos el button logout.
+const buttonLogout = document.querySelector("#logout");
+buttonLogout.classList.add('cursor-pointer');
+// Le agregamos un addEventListener y le aplicamos la función logOut.
+buttonLogout.addEventListener("click", () => {
+  logOut();
+  window.location.href = "../index.html";
+});
+
+// Función onLoad que se ejecuta apenas carga la página.
+// const username = document.querySelector("#username");
+// const tourDates = document.querySelector("#tour-dates");
+// tourDates.classList.add('cursor-pointer');
+
+// let user = "";
+
+// tourDates.addEventListener("click", () => {
+//   window.location.href = `./tours.html?user=${user}`;
+// });
+
+// onLoad();
