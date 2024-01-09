@@ -8,13 +8,13 @@ const getAlbums = async () => {
         response.data.map((album) => {
             renderAlbums(album);
         });
+        
 
         const trash = document.querySelectorAll('i');
 
         for (let i = 0; i < trash.length; i++) {
             trash[i].addEventListener("click", () => {
                 deleteAlbum(response.data[i]._id);
-
             });
         };
 
@@ -29,26 +29,27 @@ getAlbums();
 
 // Función que renderiza cada album para mostarlos en la Home.
 const renderAlbums = (album) => {
-
+    // Tomamos el Div padre.
     const div = document.querySelector('#albumsDiv');
+    // Creamos los elementos.
     const newDiv = document.createElement('div');
     const imgAlbum = document.createElement('img');
     const span = document.createElement('span');
     const iconTrash = document.createElement("i");
-
+    // Le damos los estilos.
+    div.classList.add('mx-52')
     newDiv.classList.add('.singleDiv');
     span.textContent = album.yearOfRelease;
     imgAlbum.classList.add('w-48', 'h-48', 'cursor-pointer');
     imgAlbum.src = album.cover ? album.cover : 'https://imgur.com/0uSALUr.png';
     iconTrash.classList.add('fa-solid', 'fa-trash-can', 'cursor-pointer');
-
-
+    // Agregamos los elementos al HTML.
     div.appendChild(newDiv);
     newDiv.appendChild(span);
     newDiv.appendChild(imgAlbum);
     newDiv.appendChild(iconTrash);
 
-    // Redirigir a un album especifico cuando haga click en la imagen.
+    // Agregamos un addEventListener para redirigir a un album especifico.
     imgAlbum.addEventListener("click", () => {
         redirect(album._id);
     });
@@ -58,17 +59,14 @@ const renderAlbums = (album) => {
 const deleteAlbum = async (album) => {
     try {
         await axios.delete(`../album/${album}`);
-        swal({
+        await swal({
             title: "Album deleted successfully!",
             icon: "success",
-        })
-        .then(() => {
-            location.reload();
         });
+        location.reload();
 
-
-        const albums = document.querySelectorAll('.singleDiv');
-        albums.forEach((album) => album.remove());
+        // const albums = document.querySelectorAll('.singleDiv');
+        // albums.forEach((album) => album.remove());
 
         // const response = await axios.get("../album/all");
         // response.data.map((album) => {

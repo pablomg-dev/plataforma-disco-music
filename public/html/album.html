@@ -8,6 +8,7 @@
   <link rel="icon" href="./images/favicon.ico" />
   <link rel="stylesheet" href="../styles.css" />
   <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://kit.fontawesome.com/17f5a43e6f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -27,68 +28,71 @@
       </div>
 
       <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
-        <a href="./editAlbum.html">Edit Album</a>
+        <span id="editAlbum">Edit Album</span>
       </div>
 
       <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
-        <a href="./addSong.html">Add Song</a>
+        <span id="addSong">Add Song</span>
       </div>
 
       <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
-        <a href="../index.html" id="logout">Log Out</a>
+        <span id="logOut">Log Out</span>
       </div>
 
     </div>
 
-    <div class="bg-[url('images/band3.png')] h-screen w-full bg-center bg-cover bg-no-repeat overflow-auto">
+    <div class="bg-[url('images/band3.png')] h-screen w-full bg-center bg-cover bg-no-repeat overflow-auto" id="albumDiv">
 
-      <h1 class="text-3xl font-semibold text-black mx-36 mt-10 mb-5 tracking-wider">Audioslave</h1>
+      <!-- <h1 class="text-3xl font-semibold text-black mx-36 mt-10 mb-5 tracking-wider">Audioslave</h1> -->
 
-      <p class="text-black mx-36 mb-5 text-justify text-base">
+      <!-- <p class="text-black mx-36 mb-5 text-justify text-base">
         Audioslave is the title of the self-titled debut studio album recorded by the American alternative rock
         supergroup Audioslave. It was released by Epic Records and Interscope Records on November 18, 2002 in the United
         Kingdom and a day later in the United States. Joined. The music displayed in the recording bears a
         characteristic resemblance to that of Rage Against the Machine (a group that included three of the four members
         of Audioslave), <strong>mixed with the characteristic voice of Chris Cornell, former Soundgarden
           vocalist.</strong>
-      </p>
+      </p> -->
 
-      <h2 class="text-2xl font-semibold text-black text-center my-5 tracking-wider">
+      <!-- <h2 class="text-2xl font-semibold text-black text-center my-5 tracking-wider">
         Songs:
-      </h2>
+      </h2> -->
 
       <!-- lista de canciones -->
-      <div class="mx-52">
 
-        <ul>
+      <!-- <div class="mx-52" id="songsDiv"> -->
 
-        <div class="flex bg-red-600 bg-opacity-75 rounded mb-2">
-          <div class="p-1.5 w-min">01</div>
-          <div class="p-1.5 w-full">Cochise</div>
-          <div class="p-1.5 w-full text-center">03:42</div>
-          <button class="p-1.5 w-min font-bold">🗑</button>
-          <a class="p-1.5 w-min">▶</a>
-        </div>
+        <!-- <ul> -->
 
-        <div class="flex bg-red-600 bg-opacity-75 rounded mb-2">
+        <!-- <li>
+          <span class="song-number">01</span>
+          <span class="song-title"> Honky Tonks Women</span>
+          <span class="song-duration"> 3:19 </span>
+          <span class="song-icons">
+            <i class="fas fa-trash-alt"></i>
+            <i class="fas fa-music"></i>
+          </span>
+        </li> -->
+
+        <!-- <div class="flex bg-red-600 bg-opacity-75 rounded mb-2">
           <div class="p-1.5 w-min">02</div>
           <div class="p-1.5 w-full">Show Me How to Live</div>
           <div class="p-1.5 w-full text-center">04:38</div>
           <button class="p-1.5 w-min font-bold">🗑</button>
           <a class="p-1.5 w-min">▶</a>
-        </div>
+        </div> -->
 
-        <div class="flex bg-red-600 bg-opacity-75 rounded mb-2">
+        <!-- <div class="flex bg-red-600 bg-opacity-75 rounded mb-2">
           <div class="p-1.5 w-min">03</div>
           <div class="p-1.5 w-full">Gasoline</div>
           <div class="p-1.5 w-full text-center">04:39</div>
           <button class="p-1.5 w-min font-bold">🗑</button>
           <a class="p-1.5 w-min">▶</a>
-        </div>
+        </div> -->
 
-        </ul>
+        <!-- </ul> -->
 
-      </div>
+      <!-- </div> -->
 
     </div>
 
@@ -96,7 +100,7 @@
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
   <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="./script.js" type="module"></script>
+  <script src="../js/album.js" type="module"></script>
 </body>
 
 </html>
