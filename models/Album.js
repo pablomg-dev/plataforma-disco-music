@@ -14,7 +14,8 @@ const Album = new mongoose.Schema({
     yearOfRelease: {
         type: Number,
         required: [true, "The year is required"],
-        min: 1,
+        min: 1900,
+        max: 2030,
     },
     songs: [{ title: { type: String }, duration: { type: String }, link: { type: String } }],
     cover: { type: String },

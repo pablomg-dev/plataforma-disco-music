@@ -25,15 +25,7 @@
       </div>
 
       <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
-        <a href="./editAlbum.html">Edit Album</a>
-      </div>
-
-      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
-        <a href="./addSong.html">Add Song</a>
-      </div>
-
-      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
-        <a href="./index.html">Log Out</a>
+        <span id="logout">Log Out</span>
       </div>
 
     </div>
@@ -44,37 +36,39 @@
 
       <div class="flex justify-center text-center">
 
-        <form action="" method="post" class="w-1/2">
+        <form class="w-1/2">
 
-          <label class="block font-semibold">Tittle
+          <label class="block font-semibold">Title
 
-            <input type="text" name="tittle" required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+            <input type="text" name="title" required
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="title">
 
           </label>
 
           <label class="block font-semibold">Release Year
 
             <input type="number" name="yearOfRelease" required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="yearOfRelease">
 
           </label>
 
           <label class="block font-semibold">Description
 
             <textarea name="description" cols="30" rows="10" name="description" required 
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"></textarea>
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="description"></textarea>
 
           </label>
 
-          <label class="block font-semibold">Add Image (URL)
+          <label class="block font-semibold">Add Album Cover (URL)
 
             <input type="url" name="cover" placeholder="https://www..." required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="cover">
 
           </label>
 
-          <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700">Add Album</button>
+          <button class="mt-3 mr-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4" id="addButton">Add Album</button>
+
+          <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4" id="buttonCancel">Cancel</button>
 
         </form>
 
@@ -84,6 +78,9 @@
 
   </div>
 
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+  <script src="../js/addAlbum.js" type="module"></script>
 </body>
 
 </html>

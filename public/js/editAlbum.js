@@ -2,7 +2,7 @@
 import { onLoad } from "../utils/utils.js";
 import { logOut } from "../utils/utils.js";
 
-// Guardar en constantes los botones Edit y Cancel.
+// Guardar en constantes los botones Add Song, Edit y Cancel.
 const buttonAddSong = document.querySelector("#addSong");
 const buttonEdit = document.querySelector("#buttonEdit");
 const buttonCancel = document.querySelector('#buttonCancel');
@@ -13,17 +13,14 @@ const idAlbum = query[1];
 
 // Función para tomar los valores del form (los input que haga el usuario).
 function getInputValues() {
-
   // Capturar los input y guardarlos.
   const titleInput = document.getElementById("title");
   const descriptionInput = document.getElementById("description");
   const coverInput = document.getElementById("cover");
-
   // Obtener los valores de los campos de entrada.
   const titleValue = titleInput.value;
   const descriptionValue = descriptionInput.value;
   const imageValue = coverInput.value;
-
   // Devolver los valores en un objeto.
   return {
     title: titleValue,
@@ -61,7 +58,7 @@ buttonEdit.addEventListener("click", (e) => {
     changeAlbum(e);
   });
 
-// Agregar un addEventListener al button Cancel para reedirigirnos a la vista individual del album.
+// Agregar un addEventListener al Button Cancel para reedirigirnos a la vista individual del album.
   buttonCancel.addEventListener("click", () => {
     window.location.href = `../html/album.html?album=${idAlbum}`;
   });
