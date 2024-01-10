@@ -1,18 +1,20 @@
-// Importamos las funciones onLoad y logOut
+// Importar las funciones onLoad y logOut.
 import { onLoad } from "../utils/utils.js";
 import { logOut } from "../utils/utils.js";
 
-// Obtenemos los botones Edit y Cancel.
+// Guardar en constantes los botones Edit y Cancel.
+const buttonAddSong = document.querySelector("#addSong");
 const buttonEdit = document.querySelector("#buttonEdit");
 const buttonCancel = document.querySelector('#buttonCancel');
 
-// Obtenemos el id del album y lo guardamos.
+// Capturar el id del album y guardarlo en una constante.
 const query = window.location.search.split("=");
 const idAlbum = query[1];
 
 // Función para tomar los valores del form (los input que haga el usuario).
 function getInputValues() {
-  // Obtener los input del form.
+
+  // Capturar los input y guardarlos.
   const titleInput = document.getElementById("title");
   const descriptionInput = document.getElementById("description");
   const coverInput = document.getElementById("cover");
@@ -28,31 +30,44 @@ function getInputValues() {
     description: descriptionValue,
     cover: imageValue,
   };
-}
+};
 
-// Agregamos un addEventListener al button Edit para ejecutar la función changeAlbum.
-buttonEdit.addEventListener("click", (e) => {
-    changeAlbum(e);
-  });
-
+// Función que envia la info de los inputs del usuario y las envia a la base de datos para actualizarla.
 const changeAlbum = async (e) => {
   e.preventDefault();
   const objectToSend = getInputValues();
   try {
     const response = await axios.put(`../../album/${idAlbum}`, objectToSend);
     await swal({
-      title: "Album edited!",
-      text: 'You modified the album!',
+      title: "Album edited correctly!",
       icon: "success",
-      button: "Ok",
     });
+
     window.location.href = `../html/home.html`;
+
   } catch (error) {
     console.log(error);
   }
 };
 
-// Obtenemos el button logout.
+// Agregar un addEventListener al Button Add Song.
+buttonAddSong.classList.add('cursor-pointer');
+buttonAddSong.addEventListener("click", () => {
+  window.location.href = `../html/addSong.html?album=${idAlbum}`;
+});
+
+// Agregar un addEventListener al Button Edit para ejecutar la función changeAlbum.
+buttonEdit.addEventListener("click", (e) => {
+    changeAlbum(e);
+  });
+
+// Agregar un addEventListener al button Cancel para reedirigirnos a la vista individual del album.
+  buttonCancel.addEventListener("click", () => {
+    window.location.href = `../html/album.html?album=${idAlbum}`;
+  });
+
+// Log Out.
+// Capturar el Button Log Out.
 const buttonLogout = document.querySelector("#logout");
 buttonLogout.classList.add('cursor-pointer');
 // Le agregamos un addEventListener y le aplicamos la función logOut.
@@ -60,9 +75,3 @@ buttonLogout.addEventListener("click", () => {
   logOut();
   window.location.href = "../index.html";
 });
-
-//   const redirect = (id) => { window.location.href = `./album.html?album=${id}` };
-
-//   buttonCancel.addEventListener("click",
-//     window.location.href = `../album.html?album=${idAlbum}`
-//   );

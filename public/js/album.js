@@ -1,16 +1,16 @@
-// Importamos las funciones onLoad y logOut
+// Importar las funciones onLoad y logOut
 import { onLoad } from "../utils/utils.js";
 import { logOut } from "../utils/utils.js";
 
-// Obtenemos los botones Edit Album y Add Song.
+// Guardar en constantes los botones de la Sidebar.
 const editAlbum = document.querySelector("#editAlbum");
 const addSong = document.querySelector("#addSong");
 
-// Agrego estilo a botones de la sidebar
+// Agregar estilo a botones de la sidebar (puntero mano).
 editAlbum.classList.add('cursor-pointer');
 addSong.classList.add('cursor-pointer');
 
-// Obtenemos el id del album y lo guardamos.
+// Obtener el id del album y guardarlo.
 const query = window.location.search.split("=");
 const idAlbum = query[1];
 
@@ -130,6 +130,7 @@ const deleteSong = async (album, song) => {
         title: "Song deleted correctly!",
         icon: "success",
       });
+
       location.reload();
 
       ul.innerHTML = ""; // limpia la lista actual
@@ -152,6 +153,7 @@ const deleteSong = async (album, song) => {
     }
   };
 
+// Log Out.
 // Obtenemos el button logout.
 const buttonLogout = document.querySelector("#logout");
 buttonLogout.classList.add('cursor-pointer');

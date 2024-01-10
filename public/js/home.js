@@ -68,22 +68,16 @@ const deleteAlbum = async (album) => {
             title: "Album deleted successfully!",
             icon: "success",
         });
+
         location.reload();
-
-        // const albums = document.querySelectorAll('.singleDiv');
-        // albums.forEach((album) => album.remove());
-
-        // const response = await axios.get("../album/all");
-        // response.data.map((album) => {
-        //     renderAlbums(album);
-        // });
 
     } catch (error) {
         console.log(error.message);
     }
 };
 
-// Obtenemos el button logout.
+// Log Out.
+// Capturar el Button Log Out.
 const buttonLogout = document.querySelector("#logout");
 buttonLogout.classList.add('cursor-pointer');
 // Le agregamos un addEventListener y le aplicamos la función logOut.
