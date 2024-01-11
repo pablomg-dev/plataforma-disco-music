@@ -9,7 +9,7 @@ const Album = new mongoose.Schema({
         type: String,
         required: [true, "The description is required"],
         minLength: 5,
-        maxLength: 300,
+        maxLength: 500,
     },
     yearOfRelease: {
         type: Number,

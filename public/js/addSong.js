@@ -42,7 +42,7 @@ const addSong = async (e) => {
     try {
         await axios.put(`../../song/${idAlbum}`, objectToSend);
         await swal({
-            title: "Song added correctly!",
+            title: "Song added successfully!",
             icon: "success",
         });
         redirect("../html/album.html", album._id);
