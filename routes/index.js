@@ -7,8 +7,10 @@ const Album = require("../models/Album");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Generar mas variables para el hasheo de la password.
+// Se usa para generar mas seguridad en el hasheo de la password.
 const saltRounds = 10;
+// Se usa en la función de crear el token.
+const secret = 'audioslave';
 
 // Hasheo de password.
 const hashPassword = async (password) => {
@@ -27,8 +29,7 @@ router.post("/login", async(req, res) => {
     const match = await bcrypt.compare(password, user.password);
     const payload = {email: user.email, name: user.name, lastName: user.lastName};
     if (match) {
-      const secret = password;
-      const token = jwt.sign(payload, secret, { expiresIn: '24h' });
+      const token = jwt.sign(payload, secret, { expiresIn: '1h' });
         res.cookie('token',token);
         res.status(200).send(payload);
     } else {
