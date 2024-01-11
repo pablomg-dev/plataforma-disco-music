@@ -1,9 +1,10 @@
 // Importar las funciones onLoad y logOut.
-import { logOut } from "../utils/utils.js";
+import {onLoad, logOut} from "../utils/utils.js";
 
 // Guardar en constantes el Add Album Button y Cancel Button.
 const addButton = document.querySelector('#addButton')
 const buttonCancel = document.querySelector('#buttonCancel');
+const editAlbum = document.querySelector('#editAlbum')
 
 // Obtener el id del album y guardarlo.
 const idAlbum = window.location.search.split("album=")[1];
@@ -63,6 +64,12 @@ const getAlbum = async () => {
 };
 getAlbum();
 
+// Agregar un addEventListener al Button Add Album para redirigir al usuario a la vista del album para editar.
+editAlbum.classList.add('cursor-pointer');
+editAlbum.addEventListener("click", (e) => {
+    redirect("../html/editAlbum.html", album._id);
+});
+
 // Agregar un addEventListener al Button Add Song para ejecutar la función addSong.
 addButton.addEventListener("click", (e) => {
     addSong(e);
@@ -82,3 +89,6 @@ buttonLogout.addEventListener("click", () => {
     logOut();
     window.location.href = "../index.html";
 });
+
+// Función que sirve para que solo accendan los usuarios logueados.
+onLoad();

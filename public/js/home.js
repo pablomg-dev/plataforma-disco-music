@@ -1,5 +1,5 @@
-// Importamos las funciones onLoad y logOut
-import { logOut } from "../utils/utils.js";
+// Importamos las funciones onLoad y logOut.
+import {onLoad, logOut} from "../utils/utils.js";
 
 
 // Función que toma el id del album a renderizar y se lo agregaremos como query param a la url.
@@ -83,15 +83,5 @@ buttonLogout.addEventListener("click", () => {
   window.location.href = "../index.html";
 });
 
-
-const onLoad = async () => {
-  try {
-    const response = await axios.get("../me");
-    const username = document.querySelector('#username');
-    username.textContent = `${response.data.name} ${response.data.lastName}`;
-  } catch (error) {
-    console.log(error);
-    window.location.href = "../index.html";
-  }
-};
+// Función que sirve para que solo accendan los usuarios logueados.
 onLoad();

@@ -10,7 +10,7 @@ const jwt = require("jsonwebtoken");
 // Se usa para generar mas seguridad en el hasheo de la password.
 const saltRounds = 10;
 // Se usa en la función de crear el token.
-const secret = 'audioslave';
+const secret = "audioslave";
 
 // Hasheo de password.
 const hashPassword = async (password) => {
@@ -29,11 +29,11 @@ router.post("/login", async(req, res) => {
     const match = await bcrypt.compare(password, user.password);
     const payload = {email: user.email, name: user.name, lastName: user.lastName};
     if (match) {
-      const token = jwt.sign(payload, secret, { expiresIn: '1h' });
-        res.cookie('token',token);
+      const token = jwt.sign(payload, secret, { expiresIn: "1h" });
+        res.cookie("token",token);
         res.status(200).send(payload);
     } else {
-      res.status(401).send({message:'Wrong email or password'});
+      res.status(401).send({message:"Wrong email or password"});
     }
   } catch (error) {
     res.status(401).send({message:error.message});

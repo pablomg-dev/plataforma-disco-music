@@ -1,5 +1,5 @@
-// Importar las funciones onLoad y logOut.
-import { logOut } from "../utils/utils.js";
+// Importar las funciones onLoad y logOut, desde la carpeta utils.
+import {onLoad, logOut} from "../utils/utils.js";
 
 // Guardar en constantes los botones Add Song, Edit y Cancel.
 const buttonAddSong = document.querySelector("#addSong");
@@ -71,3 +71,5 @@ buttonLogout.addEventListener("click", () => {
   logOut();
   window.location.href = "../index.html";
 });
+
+onLoad();

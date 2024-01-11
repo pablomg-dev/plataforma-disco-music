@@ -1,5 +1,5 @@
 // Importar las funciones onLoad y logOut.
-import { logOut } from "../utils/utils.js";
+import {onLoad, logOut} from "../utils/utils.js";
 
 // Guardar en constantes el Add Album Button y Cancel Button.
 const addButton = document.querySelector('#addButton')
@@ -65,3 +65,6 @@ buttonLogout.addEventListener("click", () => {
   logOut();
   window.location.href = "../index.html";
 });
+
+// Función que sirve para que solo accendan los usuarios logueados.
+onLoad();
