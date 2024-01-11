@@ -1,5 +1,5 @@
 // Importamos las funciones onLoad y logOut
-import { onLoad } from "../utils/utils.js";
+// import { onLoad } from "../utils/utils.js";
 import { logOut } from "../utils/utils.js";
 
 
@@ -28,9 +28,7 @@ const getAlbums = async () => {
     }
 
 };
-
 getAlbums();
-
 
 // Función que renderiza cada album para mostarlos en la Home.
 const renderAlbums = (album) => {
@@ -86,15 +84,15 @@ buttonLogout.addEventListener("click", () => {
   window.location.href = "../index.html";
 });
 
-// Función onLoad que se ejecuta apenas carga la página.
-// const username = document.querySelector("#username");
-// const tourDates = document.querySelector("#tour-dates");
-// tourDates.classList.add('cursor-pointer');
 
-// let user = "";
-
-// tourDates.addEventListener("click", () => {
-//   window.location.href = `./tours.html?user=${user}`;
-// });
-
+// const onLoad = async () => {
+//   try {
+//     const response = await axios.get("../me");
+//     const username = document.querySelector('#username');
+//     username.textContent = `${response.data.name} ${response.data.lastName}`;
+//   } catch (error) {
+//     console.log(error);
+//     window.location.href = "../index.html";
+//   }
+// };
 // onLoad();

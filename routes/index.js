@@ -1,21 +1,20 @@
 const express = require("express");
 const router = express.Router();
-// Requerimos los models
+// Requerimos los models.
 const User = require("../models/User");
 const Album = require("../models/Album");
 // Requerimos bcrypt y jsonwebtoken
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Generar mas variables para el hasheo de la password
+// Generar mas variables para el hasheo de la password.
 const saltRounds = 10;
 
-// Hasheo de password
+// Hasheo de password.
 const hashPassword = async (password) => {
   const hash = await bcrypt.hash(password, saltRounds);
   return hash;
 };
-
 
 // RUTAS
 
@@ -55,7 +54,7 @@ router.get("/me", (req, res) => {
   try {
     const token = req.cookies.token;
     const payload = jwt.verify(token, secret);
-    res.send(payload);
+    res.status(200).send(payload);
   } catch (error) {
     res.status(401).send(error.message);
   }
@@ -84,7 +83,7 @@ router.get("/user/:id", async (req, res) => {
   try {
     let response = await User.findById(req.params.id);
     res.status(200).send({
-      usuario: {
+      User: {
         name: response.name,
         lastName: response.lastName,
         email: response.email,

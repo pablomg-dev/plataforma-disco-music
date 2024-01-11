@@ -25,11 +25,11 @@
       </div>
 
       <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
-        <a href="./editAlbum.html">Edit Album</a>
+        <span>Edit Album</span>
       </div>
 
       <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black" id="logout">
-        <a href="../index.html">Log Out</a>
+        <span id="logout">Log Out</span>
       </div>
       
     </div>
@@ -42,31 +42,31 @@
 
         <form action="" method="post" class="w-1/2">
 
-          <label class="block font-semibold">Tittle
+          <label class="block font-semibold">Title
 
             <input type="text" name="tittle" required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="title">
 
           </label>
 
           <label class="block font-semibold">Duration
 
             <input type="text" name="duration" required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="duration">
 
           </label>
 
           <label class="block font-semibold">Add Link (URL)
 
-            <input type="text" name="addLink(url)" placeholder="https://www..." required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700">
+            <input type="url" name="addLink(url)" placeholder="https://www..." required
+              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="link">
 
           </label>
 
           <button
-            class="mt-3 mr-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4">Add Song</button>
+            class="mt-3 mr-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4" id="addButton">Add Song</button>
 
-          <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4">Cancel</button>
+          <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4" id="buttonCancel">Cancel</button>
 
         </form>
 

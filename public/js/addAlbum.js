@@ -27,6 +27,7 @@ function getInputValues() {
   };
 };
 
+// Función que agrega un album, tomando los valores de la función getInputValues.
 const addAlbum = async (e) => {
   e.preventDefault();
   const objectToSend = getInputValues();
@@ -36,9 +37,7 @@ const addAlbum = async (e) => {
         title: "Album added successfully!",
         icon: "success",
       });
-
-    window.location.href = "../html/home.html";
-
+      window.location.href = "../html/home.html";
   } catch (error) {
     swal({
       title: "Could not add album, try again.",

@@ -1,11 +1,11 @@
-const onLoad = async () => {
-    try {
-      const response = await axios.get("../me");
-      username.textContent = `${response.data.name} ${response.data.lastName}`;
-    } catch (error) {
-      window.location.href = "../index.html";
-    }
-  };
+// const onLoad = async () => {
+//     try {
+//       const response = await axios.get("../me");
+//       username.textContent = `${response.data.name} ${response.data.lastName}`;
+//     } catch (error) {
+//       window.location.href = "../index.html";
+//     }
+//   };
   
   const logOut = async () => {
     try {
@@ -15,4 +15,4 @@ const onLoad = async () => {
     }
   };
   
-  export { onLoad, logOut };
+  export { logOut };

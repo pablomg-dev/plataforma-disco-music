@@ -11,10 +11,9 @@ editAlbum.classList.add('cursor-pointer');
 addSong.classList.add('cursor-pointer');
 
 // Obtener el id del album y guardarlo.
-const query = window.location.search.split("=");
-const idAlbum = query[1];
+const idAlbum = window.location.search.split("album=")[1];
 
-// Funcion que nos lleva a editar o agregar un nuevo album o canción.
+// Funcion que nos lleva a un album en específico.
 const redirect = (url, id) => {
   window.location.href = `${url}?album=${id}`;
 };
@@ -43,7 +42,6 @@ const getAlbum = async () => {
         console.log(error);
     }
 };
-
 getAlbum();
 
 
