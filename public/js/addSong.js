@@ -1,5 +1,4 @@
 // Importar las funciones onLoad y logOut.
-import { onLoad } from "../utils/utils.js";
 import { logOut } from "../utils/utils.js";
 
 // Guardar en constantes el Add Album Button y Cancel Button.
