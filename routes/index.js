@@ -3,11 +3,11 @@ const router = express.Router();
 // Requerimos los models.
 const User = require("../models/User");
 const Album = require("../models/Album");
-// Requerimos bcrypt y jsonwebtoken
+// Requerimos bcrypt y jsonwebtoken.
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
-// Se usa para generar mas seguridad en el hasheo de la password.
+// Cantidad de veces que queremos que aplique el hash.
 const saltRounds = 10;
 // Se usa en la función de crear el token.
 const secret = "audioslave";

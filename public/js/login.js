@@ -19,10 +19,8 @@ const loginUser = async (e) => {
             title: "Login Successfull!",
             icon: "success",
           });
-
         window.location.href = `../html/home.html`;
     }
-
     catch (error) {
         swal("Error!", "Wrong Email or Password.", "error");
     }
