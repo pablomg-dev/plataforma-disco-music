@@ -7,10 +7,15 @@ const Album = require("../models/Album");
 const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
+// Usamos variables de entorno para ocultar información sensible.
+const dotenv = require("dotenv");
+dotenv.config();
+
+// Guardamos la secret en una variable de entorno para ocultarla.
+const secret = process.env.SECRET;
+
 // Cantidad de veces que queremos que aplique el hash.
 const saltRounds = 10;
-// Se usa en la función de crear el token.
-const secret = "audioslave";
 
 // Hasheo de password.
 const hashPassword = async (password) => {
