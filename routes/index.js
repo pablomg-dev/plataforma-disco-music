@@ -21,24 +21,24 @@ const hashPassword = async (password) => {
 // RUTAS
 
 // Rutap para el Login del usuario.
-router.post("/login", async(req, res) => {
+router.post("/login", async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
-    const user = await User.findOne({email: email});
+    const user = await User.findOne({ email: email });
     const match = await bcrypt.compare(password, user.password);
-    const payload = {email: user.email, name: user.name, lastName: user.lastName};
+    const payload = { email: user.email, name: user.name, lastName: user.lastName };
     if (match) {
       const token = jwt.sign(payload, secret, { expiresIn: "1h" });
-        res.cookie("token",token);
-        res.status(200).send(payload);
+      res.cookie("token", token);
+      res.status(200).send(payload);
     } else {
-      res.status(401).send({message:"Wrong email or password"});
-    }
+      res.status(401).send({ message: "Wrong email or password" });
+    };
   } catch (error) {
-    res.status(401).send({message:error.message});
+    res.status(401).send({ message: error.message });
   }
-})
+});
 
 // Ruta para el logout.
 router.post("/logout", async (req, res) => {
@@ -88,7 +88,7 @@ router.get("/user/:id", async (req, res) => {
         name: response.name,
         lastName: response.lastName,
         email: response.email,
-      },
+      }
     });
   } catch (error) {
     res.status(500).send({ "Error when requesting user": error });
@@ -138,11 +138,12 @@ router.post("/album/add", async (req, res) => {
 });
 
 // Ruta para editar un album.
-router.put("/album/:id", async (req, res) => {
+router.put("/album/:idAlbum", async (req, res) => {
   try {
-    const album = await Album.findByIdAndUpdate(req.params.id, req.body, {
-      new: true,
-    });
+    const album = await Album.findByIdAndUpdate(req.params.idAlbum, req.body,
+      {
+        new: true,
+      });
     res.status(200).send(album);
   } catch (error) {
     res.status(500).send({ "error when editing an album": error });

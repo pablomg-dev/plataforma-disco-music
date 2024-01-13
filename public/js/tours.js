@@ -3,7 +3,7 @@ const span = document.querySelector("#welcome");
 
 while (userName.length < 3) {
     userName = prompt("The name must have at least 3 letters, tell us what is really your name?").toUpperCase();
-}
+};
 
 span.textContent = (`Hello, ${userName}.`);
 

@@ -18,5 +18,10 @@ const onLoad = async () => {
       console.log(error.message);
     }
   };
+
+  // Función que toma el id del album a renderizar y se lo agregaremos como query params a la url.
+const redirect = (id) => { 
+  window.location.href = `./album.html?album=${id}`
+};
   
-  export {onLoad, logOut };
+  export {onLoad, logOut, redirect };

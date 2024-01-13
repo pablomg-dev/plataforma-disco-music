@@ -36,7 +36,9 @@ const addAlbum = async (e) => {
         title: "Album added successfully!",
         icon: "success",
       });
+
       window.location.href = "../html/home.html";
+      
   } catch (error) {
     swal({
       title: "Could not add album, try again.",

@@ -6,9 +6,8 @@ const buttonAddSong = document.querySelector("#addSong");
 const buttonEdit = document.querySelector("#buttonEdit");
 const buttonCancel = document.querySelector('#buttonCancel');
 
-// Capturar el id del album y guardarlo en una constante.
-const query = window.location.search.split("=");
-const idAlbum = query[1];
+// Obtener el id del album y guardarlo.
+const idAlbum = window.location.search.split("album=")[1];
 
 // Función para tomar los valores del form (los input que haga el usuario).
 function getInputValues() {
@@ -19,12 +18,12 @@ function getInputValues() {
   // Obtener los valores de los campos de entrada.
   const titleValue = titleInput.value;
   const descriptionValue = descriptionInput.value;
-  const imageValue = coverInput.value;
+  const coverValue = coverInput.value;
   // Devolver los valores en un objeto.
   return {
     title: titleValue,
     description: descriptionValue,
-    cover: imageValue,
+    cover: coverValue,
   };
 };
 
@@ -33,29 +32,33 @@ const changeAlbum = async (e) => {
   e.preventDefault();
   const objectToSend = getInputValues();
   try {
-    const response = await axios.put(`../../album/${idAlbum}`, objectToSend);
+    const response = await axios.put(`../album/${idAlbum}`, objectToSend);
     await swal({
       title: "Album edited correctly!",
       icon: "success",
     });
 
-    window.location.href = `../html/home.html`;
+    window.location.href = "../html/home.html";
 
   } catch (error) {
-    console.log(error);
+    swal({
+      title: "Could not edit album, try again!",
+      icon: "warning",
+      text: "All fields must be completed correctly.",
+    });
   }
 };
 
-// Agregar un addEventListener al Button Add Song.
+// Agregar un addEventListener al Button Edit para ejecutar la función changeAlbum.
+buttonEdit.addEventListener("click", (e) => {
+  changeAlbum(e);
+});
+
+// Agregar un addEventListener al Button Add Song, asi nos redirige al id del album actual.
 buttonAddSong.classList.add('cursor-pointer');
 buttonAddSong.addEventListener("click", () => {
   window.location.href = `../html/addSong.html?album=${idAlbum}`;
 });
-
-// Agregar un addEventListener al Button Edit para ejecutar la función changeAlbum.
-buttonEdit.addEventListener("click", (e) => {
-    changeAlbum(e);
-  });
 
 // Agregar un addEventListener al Button Cancel para reedirigirnos a la vista individual del album.
   buttonCancel.addEventListener("click", () => {
@@ -72,4 +75,5 @@ buttonLogout.addEventListener("click", () => {
   window.location.href = "../index.html";
 });
 
+// Función que sirve para que solo accendan los usuarios logueados.
 onLoad();

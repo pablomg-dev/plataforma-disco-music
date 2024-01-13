@@ -1,9 +1,5 @@
 // Importamos las funciones onLoad y logOut.
-import {onLoad, logOut} from "../utils/utils.js";
-
-
-// Función que toma el id del album a renderizar y se lo agregaremos como query param a la url.
-const redirect = (id) => { window.location.href = `./album.html?album=${id}` };
+import {onLoad, logOut, redirect} from "../utils/utils.js";
 
 // Función que trae la información del backend para cada album, la renderiza y puede borrarla.
 const getAlbums = async () => {
@@ -13,7 +9,6 @@ const getAlbums = async () => {
             renderAlbums(album);
         });
         
-
         const trash = document.querySelectorAll('i');
 
         for (let i = 0; i < trash.length; i++) {
@@ -50,8 +45,7 @@ const renderAlbums = (album) => {
     newDiv.appendChild(span);
     newDiv.appendChild(imgAlbum);
     newDiv.appendChild(iconTrash);
-
-    // Agregamos un addEventListener para redirigir a un album especifico.
+    // Agregamos un addEventListener para redirigir a un album especifico, cuando den click en la imagen..
     imgAlbum.addEventListener("click", () => {
         redirect(album._id);
     });

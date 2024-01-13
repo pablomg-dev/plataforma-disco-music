@@ -17,8 +17,14 @@ const Album = new mongoose.Schema({
         min: 1900,
         max: 2030,
     },
-    songs: [{ title: { type: String }, duration: { type: String }, link: { type: String } }],
-    cover: { type: String },
+    songs: [{
+        title: {type: String},
+        duration: {type: String},
+        link: {type: String},
+    }],
+    cover: {
+        type: String,
+    },
 });
 
 module.exports = mongoose.model("Album", Album);
