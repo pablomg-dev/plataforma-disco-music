@@ -41,9 +41,9 @@ const addAlbum = async (e) => {
       
   } catch (error) {
     swal({
-      title: "Could not add album, try again.",
+      title: "Could not add album, try again!",
       icon: "warning",
-      text: "All fields must be completed correctly.",
+      text: "You have to complete at least the Title, Year of Release and Description.",
     });
   }
 };

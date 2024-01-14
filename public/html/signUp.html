@@ -19,22 +19,22 @@
 
       <h3 class="text-center text-2xl font-bold mb-3 tracking-wider">Register</h3>
 
-      <form action="" method="post" class="w-72">
+      <form method="post" class="w-72">
 
-        <input type="text" name="name" placeholder="Name" required
-          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none" id="name"/>
+        <input type="text" name="name" id="name" placeholder="Name" autocomplete="name" required
+          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <input type="text" name="lastName" placeholder="Last Name" required
-          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" id="lastName"/>
+        <input type="text" name="lastName" id="lastName" placeholder="Last Name" required
+          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <input type="email" name="email" placeholder="Email" required
-          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" id="email"/>
+        <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required
+          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <input type="password" name="password" placeholder="Password" required
-          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" id="password"/>
+        <input type="password" name="password" id="password" placeholder="Password" minlength="6" required
+          class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <button
-          class="w-full bg-orange-700 p-2 text-black rounded font-semibold mt-2 hover:bg-orange-600 active:bg-orange-500 tracking-widest" id="buttonRegister">Submit</button>
+        <button id="buttonRegister"
+          class="w-full bg-orange-700 p-2 text-black rounded font-semibold mt-2 hover:bg-orange-600 active:bg-orange-500 tracking-widest">Submit</button>
 
       </form>
 

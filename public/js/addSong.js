@@ -51,7 +51,7 @@ const addSong = async (e) => {
     }
 };
 
-// Función que trae la información del backend para el albun especifico.
+// Función que trae la información del backend para el album especifico.
 const getAlbum = async () => {
     try {
         const { data } = await axios.get(`../album/${idAlbum}`);

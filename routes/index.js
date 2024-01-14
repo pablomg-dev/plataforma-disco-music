@@ -32,7 +32,7 @@ router.post("/login", async (req, res) => {
     const password = req.body.password;
     const user = await User.findOne({ email: email });
     const match = await bcrypt.compare(password, user.password);
-    const payload = { email: user.email, name: user.name, lastName: user.lastName };
+    const payload = { email: user.email, name: user.name, lastName: user.lastName, id: user._id };
     if (match) {
       const token = jwt.sign(payload, secret, { expiresIn: "1h" });
       res.cookie("token", token);
@@ -71,10 +71,10 @@ router.post("/createuser", async (req, res) => {
   const { name, lastName, email, password } = req.body;
   const hashed = await hashPassword(password);
   const user = {
-    password: hashed,
-    email,
     name,
     lastName,
+    email,
+    password: hashed,
   };
   try {
     await User.create(user);
@@ -145,7 +145,7 @@ router.post("/album/add", async (req, res) => {
 // Ruta para editar un album.
 router.put("/album/:idAlbum", async (req, res) => {
   try {
-    const album = await Album.findByIdAndUpdate(req.params.idAlbum, req.body,
+    let album = await Album.findByIdAndUpdate(req.params.idAlbum, req.body,
       {
         new: true,
       });
