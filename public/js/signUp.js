@@ -35,7 +35,7 @@ const userRegister = async (e) => {
         window.location.href = `./login.html`;
     }
     catch (error) {
-        swal("Error!", "You must complete all fields.", "error");
+        swal("Error!", "You must complete all fields and Password must be at least 6 characters.", "error");
     }
 };
 
