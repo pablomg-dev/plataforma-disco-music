@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // Guardamos la secret en una variable de entorno para ocultarla.
-const secret = "secret";
+const secret = process.env.SECRET;
 
 // Cantidad de veces que queremos que aplique el hash.
 // const saltRounds = 10;

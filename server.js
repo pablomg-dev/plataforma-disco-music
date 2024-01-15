@@ -13,6 +13,7 @@ const PORT = process.env.PORT;
 const dbUser = process.env.USER_MONGO;
 const password = process.env.PASSWORD_MONGO;
 
+// Guardamos en una constante los datos que necesitamos para conectarnos luego a la base de datos de Mongo DB Atlas.
 const url = `mongodb+srv://${dbUser}:${password}@curso-intro.ee1ghra.mongodb.net/?retryWrites=true&w=majority`;
 
 // Requerimos las rutas de la carpeta routes
