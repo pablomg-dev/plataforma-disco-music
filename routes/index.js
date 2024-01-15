@@ -4,7 +4,7 @@ const router = express.Router();
 const User = require("../models/User");
 const Album = require("../models/Album");
 // Requerimos bcrypt y jsonwebtoken.
-const bcrypt = require("bcrypt");
+// const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // Usamos variables de entorno para ocultar información sensible.
@@ -12,7 +12,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // Guardamos la secret en una variable de entorno para ocultarla.
-const secret = process.env.SECRET;
+const secret = "secret";
 
 // Cantidad de veces que queremos que aplique el hash.
 // const saltRounds = 10;
@@ -33,13 +33,13 @@ router.post("/login", async (req, res) => {
     const user = await User.findOne({ email: email });
     // const match = await bcrypt.compare(password, user.password)(comente esta parte porque no me dejaba loguearme)
     const payload = { email: user.email, name: user.name, lastName: user.lastName, id: user._id };
-    // if (match) {
+    if (password == user.password) {
       const token = jwt.sign(payload, secret, { expiresIn: "1h" });
       res.cookie("token", token);
       res.status(200).send(payload);
-    // } else {
-    //   res.status(401).send({ message: "Wrong email or password" });
-    // };
+    } else {
+      res.status(401).send({ message: "Wrong email or password" });
+    };
   } catch (error) {
     res.status(401).send({ message: error.message });
   }
