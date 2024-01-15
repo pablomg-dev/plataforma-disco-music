@@ -1,13 +1,5 @@
 // Guardar en una constante el Submit button para registrarse.
 const buttonRegister = document.querySelector("#buttonRegister");
-// Crear un objeto vacío para asi luego guardar los inputs del usuario.
-// const objectToSend = {};
-
-// Función para tomar los valores del form (los input que haga el usuario).
-// function getInputValues() {
-//     const inputs = document.querySelectorAll("input");
-//     inputs.forEach((input) => (objectToSend[input.id] = input.value));
-// }
 
 // Función para tomar los valores del form (los input que haga el usuario).
 function getInputValues() {

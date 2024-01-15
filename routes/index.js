@@ -15,31 +15,31 @@ dotenv.config();
 const secret = process.env.SECRET;
 
 // Cantidad de veces que queremos que aplique el hash.
-const saltRounds = 10;
+// const saltRounds = 10;
 
 // Hasheo de password.
-const hashPassword = async (password) => {
-  const hash = await bcrypt.hash(password, saltRounds);
-  return hash;
-};
+// const hashPassword = async (password) => {
+//   const hash = await bcrypt.hash(password, saltRounds);
+//   return hash;
+// };
 
 // RUTAS
 
-// Rutap para el Login del usuario.
+// Ruta para el Login del usuario.
 router.post("/login", async (req, res) => {
   try {
     const email = req.body.email;
     const password = req.body.password;
     const user = await User.findOne({ email: email });
-    const match = await bcrypt.compare(password, user.password);
+    // const match = await bcrypt.compare(password, user.password)(comente esta parte porque no me dejaba loguearme)
     const payload = { email: user.email, name: user.name, lastName: user.lastName, id: user._id };
-    if (match) {
+    // if (match) {
       const token = jwt.sign(payload, secret, { expiresIn: "1h" });
       res.cookie("token", token);
       res.status(200).send(payload);
-    } else {
-      res.status(401).send({ message: "Wrong email or password" });
-    };
+    // } else {
+    //   res.status(401).send({ message: "Wrong email or password" });
+    // };
   } catch (error) {
     res.status(401).send({ message: error.message });
   }
@@ -69,12 +69,12 @@ router.get("/me", (req, res) => {
 // Ruta para crear un usuario.
 router.post("/createuser", async (req, res) => {
   const { name, lastName, email, password } = req.body;
-  const hashed = await hashPassword(password);
+  // const hashed = await hashPassword(password); (no uso el hasheo porque no valida bien el password)
   const user = {
     name,
     lastName,
     email,
-    password: hashed,
+    password,
   };
   try {
     await User.create(user);

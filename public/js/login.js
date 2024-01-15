@@ -21,7 +21,7 @@ const loginUser = async (e) => {
     e.preventDefault();
     const objectToSend = getInputValues();
     try {
-        const response = await axios.post(`../login`, objectToSend);
+        const response = await axios.post("../login", objectToSend);
         await swal({
             title: "Login Successfull!",
             icon: "success",
