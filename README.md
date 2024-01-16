@@ -31,6 +31,8 @@ PASSWORD_MONGO=
 
 PORT=
 
+SECRET=
+
 #### Agradecimientos:
 Muchas gracias a todo el equipo de Plataforma 5, al profe Gerardo Burgos y a todos mis compañeros de la comision Octubre-tarde (2023) por participar de las clases.
 

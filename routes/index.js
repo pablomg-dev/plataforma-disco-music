@@ -15,13 +15,13 @@ dotenv.config();
 const secret = process.env.SECRET;
 
 // Cantidad de veces que queremos que aplique el hash.
-// const saltRounds = 10;
+const saltRounds = 10;
 
 // Hasheo de password.
-// const hashPassword = async (password) => {
-//   const hash = await bcrypt.hash(password, saltRounds);
-//   return hash;
-// };
+const hashPassword = async (password) => {
+  const hash = await bcrypt.hash(password, saltRounds);
+  return hash;
+};
 
 // RUTAS
 
@@ -69,7 +69,7 @@ router.get("/me", (req, res) => {
 // Ruta para crear un usuario.
 router.post("/createuser", async (req, res) => {
   const { name, lastName, email, password } = req.body;
-  // const hashed = await hashPassword(password); (no uso el hasheo porque no valida bien el password)
+  // const hashed = await hashPassword(password);
   const user = {
     name,
     lastName,

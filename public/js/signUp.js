@@ -26,11 +26,10 @@ function getInputValues() {
 const userRegister = async (e) => {
     e.preventDefault();
     const objectToSend = getInputValues();
-    console.log(objectToSend);
     try {
         const response = await axios.post(`../createuser`, objectToSend);
         await swal({
-            title: "SignUp Successfull!",
+            title: "Sign Up Successfull!",
             icon: "success",
         });
         window.location.href = `./login.html`;
