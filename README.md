@@ -72,6 +72,7 @@ USER_MONGO=
 PASSWORD_MONGO=
 
 PORT=
+SECRET=
 
 #### Agradecimientos:
 Thank you very much to the entire Platform 5 team, to teacher Gerardo Burgo and to all my colleagues from the October-afternoon commission (2023) for participating in the classes.
