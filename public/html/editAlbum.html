@@ -12,14 +12,19 @@
 
 <body>
 
+  <!-- contenedor (container) -->
   <div class="flex flex-row">
 
+    <!-- sidebar -->
     <div class="bg-black h-screen w-64 text-red-600 text-center border border-orange-700">
 
+      <!-- imagen de usuario (image user) -->
       <img src="./images/user-image.png" alt="imagen usuario" class="w-28 mx-auto rounded-full mt-8 bg-orange-600">
 
+      <!-- nombre de usuario (username) -->
       <div class="border-b border-orange-700 py-2.5 font-medium text-orange-600"><span id="username"></span></div>
 
+      <!-- opciones de la sidebar (sidebar options) -->
       <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black">
         <a href="./home.html">Other Albums</a>
       </div>
@@ -32,12 +37,14 @@
         <span id="logout">Log Out</span>
       </div>
 
+      <!-- imagen logo de la banda (image logo band) -->
       <div>
         <img src="./images/audioslave-logo-1.png" alt="audioslave logo">
       </div>
 
     </div>
 
+    <!-- contenido (content) -->
     <div class="h-screen w-full bg-[url('images/band3.png')] bg-center bg-cover bg-no-repeat overflow-auto">
 
       <h3 class="text-2xl font-semibold text-black text-center mt-10 mb-5 tracking-wider">Edit Album</h3>
@@ -66,6 +73,7 @@
 
           </label>
 
+          <!-- botones (buttons) -->
           <button class="mt-3 mr-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4" id="buttonEdit">Edit</button>
 
           <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4" id="buttonCancel">Cancel</button>

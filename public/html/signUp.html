@@ -12,13 +12,16 @@
 
 <body>
 
+  <!-- fondo contenedor (background container) -->
   <div class="bg-[url('images/band1.jpg')] h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center">
 
+    <!-- contenedor del formulario (form container) -->
     <div
       class="flex flex-col justify-center items-center text-center w-80 h-80 rounded-2xl bg-black bg-opacity-75 text-red-600 border-2 border-orange-700 shadow-lg shadow-red-700">
 
       <h3 class="text-center text-2xl font-bold mb-3 tracking-wider">Register</h3>
 
+      <!-- formulario -->
       <form method="post" class="w-72">
 
         <input type="text" name="name" id="name" placeholder="Name" autocomplete="name" required
@@ -33,11 +36,13 @@
         <input type="password" name="password" id="password" placeholder="Password" minlength="6" required
           class="w-full h-8 py-1 px-3 my-1 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
 
+        <!-- boton registarte (button register) -->
         <button id="buttonRegister"
           class="w-full bg-orange-700 p-2 text-black rounded font-semibold mt-2 hover:bg-orange-600 active:bg-orange-500 tracking-widest">Submit</button>
 
       </form>
 
+      <!-- párrafo link de login (link paragraph to login) -->
       <p class="mt-2">Have an Account?
         <a href="./login.html" class="underline text-orange-500 visited:text-orange-700">Sign In</a>
       </p>

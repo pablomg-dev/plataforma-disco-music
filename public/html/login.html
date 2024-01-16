@@ -12,13 +12,16 @@
 
 <body>
 
+  <!-- fondo contenedor (background container) -->
   <div class="bg-[url('images/band1.jpg')] h-screen bg-center bg-cover bg-no-repeat flex justify-center items-center">
 
+    <!-- contenedor del formulario (form container) -->
     <div
       class="flex flex-col justify-center items-center text-center w-80 h-80 rounded-2xl bg-black bg-opacity-75 text-red-600 border-2 border-orange-700 shadow-lg shadow-red-700">
 
       <h3 class="text-center text-2xl font-bold mb-5 tracking-wider">Sign In</h3>
 
+      <!-- formulario (form) -->
       <form class="w-72">
 
         <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required
@@ -28,11 +31,13 @@
           class="w-full h-8 py-1 px-3 my-2 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none"/>
           <p id="passShort" class="text-center font-bold text-orange-600"></p>
 
+        <!-- boton entrar (button enter) -->
         <button
           class="w-full bg-orange-700 p-2 text-black rounded font-semibold my-4 hover:bg-orange-600 active:bg-orange-500 tracking-widest" id="login">Enter</button>
 
       </form>
 
+      <!-- párrafo de link a registrarte (link paragraph to register) -->
       <p>No Account?
         <a href="./signUp.html" class="underline text-orange-500 visited:text-orange-700">Sign Up</a>
       </p>

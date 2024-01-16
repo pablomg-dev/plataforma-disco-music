@@ -50,5 +50,5 @@ const connectMongo = async () => {
     console.log(error);
   }
 };
-
+// Invocamos a la función para conectarnos a la Base de Datos.
 connectMongo();
