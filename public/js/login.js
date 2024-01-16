@@ -4,12 +4,12 @@ const loginButton = document.querySelector("#login");
 // Función para tomar los valores del form (los input que haga el usuario).
 function getInputValues() {
   // Capturar los valores que ingresa el usuario.
-  const emailInput = document.querySelector("#email").value;
-  const passwordInput = document.querySelector("#password").value;
+  const email = document.querySelector("#email").value;
+  const password = document.querySelector("#password").value;
   // Devolver los valores en un objeto.
   return {
-    email: emailInput,
-    password: passwordInput,
+    email: email,
+    password: password,
   };
 };
 
