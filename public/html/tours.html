@@ -12,62 +12,59 @@
 </head>
 
 <!-- fondo contenedor (background container) -->
-<body class="bg-[url('images/band3.png')] h-screen bg-center bg-cover bg-no-repeat overflow-auto">
 
-    <!-- párrafo de saludo y nombre usuario (greeting paragraph and username) -->
-    <p class="m-8"><i class="fa-solid fa-ticket fa-rotate-90 fa-xl" style="color: #000000;"></i>
-        <span id="welcome"></span></p>
+<body>
 
-    <h2 class="text-black text-base md:text-xl lg:text-2xl font-semibold mt-19 mb-7 text-center">Tour & Dates</h2>
+    <div class="bg-[url('images/band3.jpg')] h-screen bg-center bg-cover bg-no-repeat overflow-auto">
 
-    <!-- tabla de fechas del tour (tour date table) -->
-    <table class="bg-white rounded-2xl border-red-700 m-auto w-6/12 shadow-lg shadow-red-700 text-xs sm:text-sm lg:text-base">
-        
-        <tr>
-            <td class="py-3 text-center font-bold md:font-normal">07 Jan, 2024</td>
-            <td class="py-3 text-center">Los Angeles, CA</td>
-            <td class="py-3 px-6 text-center"><button id="buy Los Angeles"
-                    class="border-2 border-red-700 rounded-lg p-px" onclick="getTickets('Los Angeles')">Tickets</button>
-            </td>
-        </tr>
-        <tr>
-            <td class="py-3 text-center font-bold md:font-normal">15 Jan, 2024</td>
-            <td class="py-3 text-center">San Francisco, CA</td>
-            <td class="py-3 px-6 text-center"><button id="buy San Francisco"
-                    class="border-2 border-red-700 rounded-lg p-px"
-                    onclick="getTickets(`San Francisco`)">Tickets</button></td>
-        </tr>
-        <tr>
-            <td class="py-3 text-center font-bold md:font-normal">25 Jan, 2024</td>
-            <td class="py-3 text-center">Phoenix, AZ</td>
-            <td class="py-3 px-6 text-center"><button id="buy Phoenix"
-                    class="border-2 border-red-700 rounded-lg p-px" onclick="getTickets(`Phoenix`)">Tickets</button>
-            </td>
-        </tr>
-        <tr>
-            <td class="py-3 text-center font-bold md:font-normal">03 Feb, 2024</td>
-            <td class="py-3 text-center">Tucson, AZ</td>
-            <td class="py-3 px-6 text-center"><button id="buy Tucson" class="border-2 border-red-700 rounded-lg p-px"
-                    onclick="getTickets(`Tucson`)">Tickets</button></td>
-        </tr>
-        <tr>
-            <td class="py-3 text-center font-bold md:font-normal">13 Feb, 2024</td>
-            <td class="py-3 text-center">Salt Lake City, UT</td>
-            <td class="py-3 px-6 text-center"><button id="buy Sal Lake City"
-                    class="border-2 border-red-700 rounded-lg p-px"
-                    onclick="getTickets(`Sal Lake City`)">Tickets</button></td>
-        </tr>
-        <tr>
-            <td class="py-3 text-center font-bold md:font-normal">27 Feb, 2024</td>
-            <td class="py-3 text-center">Denver, CO</td>
-            <td class="py-3 px-6 text-center"><button id="buy Denver" class="border-2 border-red-700 rounded-lg p-px"
-                    onclick="getTickets(`Denver`)">Tickets</button></td>
-        </tr>
-    </table>
+        <!-- párrafo de saludo y nombre usuario (greeting paragraph and username) -->
+        <p class="m-4"><i class="fa-solid fa-ticket fa-rotate-90 fa-xl" style="color: #000000;"></i>
+            <span id="welcome"></span>
+        </p>
 
-    <!-- imagen logo de la banda que enlaza al home (logo image of the band that links to the home) -->
-    <div class="flex justify-center">
-        <a href="./home.html"><img src="images/audioslave-logo-1.png" alt="logo audioslave" class="w-36 md:w-52"></a>
+        <h2 class="text-black text-xl sm:text-2xl md:text-3xl font-semibold mt-19 mb-4 sm:mb-5 text-center">Tour & Dates</h2>
+
+        <section
+            class="grid grid-cols-1 sm:grid-cols-3 sm:gap-3 sm:text-lg md:text-xl sm:items-center mx-7 border rounded-2xl border-red-700 shadow-lg shadow-red-700 justify-items-center bg-black bg-opacity-65 text-red-500">
+
+            <div class="font-bold sm:font-normal">07 Jan, 2024</div>
+            <div class="mb-1 sm:mb-0 sm:p-1">Los Angeles, CA</div>
+            <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Los Angeles" class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets('Los Angeles')">Tickets</button></div>
+
+            <div class="font-bold sm:font-normal">15 Jan, 2024</div>
+            <div class="mb-1 sm:mb-0 sm:p-1">San Francisco, CA</div>
+            <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Los Angeles" class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets('Los Angeles')">Tickets</button></div>
+
+            <div class="font-bold sm:font-normal">25 Jan, 2024</div>
+            <div class="mb-1 sm:mb-0 sm:p-1">Phoenix, AZ</div>
+            <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Phoenix" class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Phoenix`)">Tickets</button></div>
+
+            <div class="font-bold sm:font-normal">03 Feb, 2024</div>
+            <div class="mb-1 sm:mb-0 sm:p-1">Tucson, AZ</div>
+            <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Tucson" class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Tucson`)">Tickets</button></div>
+
+            <div class="font-bold sm:font-normal">13 Feb, 2024</div>
+            <div class="mb-1 sm:mb-0 sm:p-1">Salt Lake City, UT</div>
+            <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Sal Lake City" class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Sal Lake City`)">Tickets</button></div>
+
+            <div class="font-bold sm:font-normal">27 Feb, 2024</div>
+            <div class="mb-1 sm:mb-0 sm:p-1">Denver, CO</div>
+            <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Denver" class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Denver`)">Tickets</button></div>
+
+        </section>
+
+        <!-- imagen logo de la banda que enlaza al home (logo image of the band that links to the home) -->
+        <div class="flex justify-center">
+            <a href="./home.html"><img src="images/audioslave-logo-1.png" alt="logo audioslave"
+                    class="w-36 sm:w-44 md:w-52 lg:w-60"></a>
+        </div>
+
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>

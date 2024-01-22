@@ -33,7 +33,7 @@ function getTickets(city){
         tickets[city]--;
         swal("Congratulations!!!", `You already have your ticket for ${city}.`, "success");
     }else{
-        swal("Sorry ", "There are no more tickets.", "error");
+        swal("Sorry ", "There are no more tickets!", "error");
         disableSoldOutButtons();
     }
 };
@@ -42,7 +42,7 @@ function disableSoldOutButtons () {
         for(let city in tickets){
             if(tickets[city] == 0){
                 let buttons = document.getElementById("buy " + city);
-                buttons.innerHTML = "Sould out!!!";
+                buttons.innerHTML = "Sould Out!!!";
                 buttons.style.background = ("gray");
                 buttons.disabled = true;
             };
