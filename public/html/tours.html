@@ -11,8 +11,6 @@
     <script src="https://kit.fontawesome.com/17f5a43e6f.js" crossorigin="anonymous"></script>
 </head>
 
-<!-- fondo contenedor (background container) -->
-
 <body>
 
     <div class="bg-[url('images/band3.jpg')] h-screen bg-center bg-cover bg-no-repeat overflow-auto">
@@ -24,8 +22,9 @@
 
         <h2 class="text-black text-xl sm:text-2xl md:text-3xl font-semibold mt-19 mb-4 sm:mb-5 text-center">Tour & Dates</h2>
 
+        <!-- grilla de fecha, ciudad y botón de comprar tickets (date grid, city and buy tickets button) -->
         <section
-            class="grid grid-cols-1 sm:grid-cols-3 sm:gap-3 sm:text-lg md:text-xl sm:items-center mx-7 border rounded-2xl border-red-700 shadow-lg shadow-red-700 justify-items-center bg-black bg-opacity-65 text-red-500">
+            class="grid grid-cols-1 sm:grid-cols-3 sm:gap-2 sm:text-lg md:text-xl w-9/12 justify-items-center mx-auto border rounded-2xl border-red-700 shadow-lg shadow-red-700 bg-black bg-opacity-65 text-red-500">
 
             <div class="font-bold sm:font-normal">07 Jan, 2024</div>
             <div class="mb-1 sm:mb-0 sm:p-1">Los Angeles, CA</div>
@@ -67,7 +66,7 @@
 
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/tours.js"></script>
 </body>

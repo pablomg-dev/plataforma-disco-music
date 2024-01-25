@@ -11,7 +11,7 @@ let userAge = Number(prompt("How old are you?"));
 let buttons = document.querySelectorAll ("button");
 
 if(userAge < 18) {
-    swal("Sorry!!!", "Being a minor, you cannot buy tickets.", "info");
+    swal.fire("Sorry!!!", "Being a minor, you cannot buy tickets.", "info");
     for (let i = 0; i < buttons.length; i++) {
         buttons[i].setAttribute("disabled","disabled");
         buttons[i].style.backgroundColor = "gray";
@@ -31,9 +31,9 @@ let tickets = {
 function getTickets(city){
     if(tickets[city] > 0) {
         tickets[city]--;
-        swal("Congratulations!!!", `You already have your ticket for ${city}.`, "success");
+        swal.fire("Congratulations!!!", `You already have your ticket for ${city}.`, "success");
     }else{
-        swal("Sorry ", "There are no more tickets!", "error");
+        swal.fire("Sorry ", "There are no more tickets!", "error");
         disableSoldOutButtons();
     }
 };
