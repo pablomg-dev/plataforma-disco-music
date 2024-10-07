@@ -11,10 +11,7 @@
   <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
-<body>
-
-  <!--contenedor principal (main container)-->
-  <div class="bg-[url('html/images/band2.jpg')] h-screen w-screen bg-center bg-cover bg-no-repeat">
+<body class="bg-[url('html/images/band2.jpg')] w-full h-screen bg-cover bg-center bg-no-repeat">
 
     <!-- sección de presentación (presentation section) -->
     <section class="h-full flex flex-wrap flex-col justify-evenly items-center text-center text-red-600">
@@ -23,7 +20,7 @@
       <h1 class="text-3xl font-semibold tracking-wider animate-bounce shadow-inner shadow-orange-700 rounded-md">AUDIOSLAVE FANPAGE</h1>
 
       <!-- párrafo descriptivo (descriptive paragraph) -->
-      <P class="text-lg font-semibold">
+      <P class="text-lg md:text-xl lg:text-2xl font-semibold">
         This is a site dedicated to the band Audioslave, you can edit their albums,<br>songs, add your favorites and
         listen some of their music.
       </P>
@@ -31,11 +28,11 @@
       <!-- enlaces al login y registro (links to login and registration) -->
       <div>
         <a href="./html/login.html"
-          class="border border-orange-700 p-1 rounded-lg font-semibold tracking-wide hover:bg-orange-700 hover:text-black shadow-md shadow-orange-700">LOGIN</a>
+          class="border border-orange-700 p-1 rounded-lg font-semibold tracking-wide bg-orange-600 text-black shadow-md shadow-orange-700 hover:bg-orange-500 md:text-lg">LOGIN</a>
         <br>
         <br>
         <a href="./html/signUp.html"
-          class="border border-orange-700 p-1 rounded-lg font-semibold tracking-wide hover:bg-orange-700 hover:text-black shadow-md shadow-orange-700">SIGN
+          class="border border-orange-700 p-1 rounded-lg font-semibold tracking-wide bg-orange-600 text-black shadow-md shadow-orange-700 hover:bg-orange-500 md:text-lg">SIGN
           UP</a>
       </div>
       <br>
@@ -46,8 +43,6 @@
       </div>
 
     </section>
-
-  </div>
 
 </body>
 
