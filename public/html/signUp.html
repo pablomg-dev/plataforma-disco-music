@@ -17,28 +17,28 @@
 
     <!-- contenedor del formulario (form container) -->
     <div
-      class="flex flex-col justify-center items-center text-center w-80 md:w-96 h-96 md:h-96 rounded-2xl bg-black bg-opacity-75 text-red-600 border-2 border-orange-700 shadow-lg shadow-red-700">
+      class="flex flex-col justify-center items-center text-center w-10/12 max-w-md h-auto rounded-2xl bg-black bg-opacity-75 text-red-600 border-2 border-orange-700 shadow-lg shadow-red-700 p-4">
 
       <h3 class="text-center text-2xl font-bold mb-2 tracking-wider">Register</h3>
 
       <!-- formulario -->
-      <form method="post" class="w-72">
+      <form method="post" class="w-full">
 
         <input type="text" name="name" id="name" placeholder="Name" autocomplete="name" required
-          class="h-8 py-1 px-3 my-2 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none"/>
+          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none"/>
 
         <input type="text" name="lastName" id="lastName" placeholder="Last Name" required
-          class="h-8 py-1 px-3 my-2 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
+          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
 
         <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required
-          class="h-8 py-1 px-3 my-2 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
+          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
 
         <input type="password" name="password" id="password" placeholder="Password" minlength="6" required
-          class="h-8 py-1 px-3 my-2 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
+          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
 
         <!-- boton registarte (button register) -->
         <button id="buttonRegister"
-        class="w-100 bg-orange-700 p-2 text-black rounded font-semibold my-4 hover:bg-orange-600 active:bg-orange-500 tracking-widest">Submit</button>
+        class="w-4/5 bg-orange-700 p-2 text-black rounded font-semibold my-4 hover:bg-orange-600 active:bg-orange-500 tracking-widest">Submit</button>
 
       </form>
 
