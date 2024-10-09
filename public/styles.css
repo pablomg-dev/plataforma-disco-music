@@ -1,5 +1,19 @@
 @import url('https://fonts.googleapis.com/css2?family=RocknRoll+One&display=swap');
 
-*{
+* {
     font-family: 'RocknRoll One', sans-serif;
+}
+
+.logo1, p, a {
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
