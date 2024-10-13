@@ -4,7 +4,10 @@
     font-family: 'RocknRoll One', sans-serif;
 }
 
-.logo1, p, a {
+/* Animacion Index */
+.logoIndex,
+.pIndex,
+.aIndex {
     animation: fadeIn 1.5s ease-in-out;
 }
 
@@ -15,5 +18,20 @@
 
     to {
         opacity: 1;
+    }
+}
+
+/* Animacion Home */
+.aniSidebar {
+    animation: zoomIn 0.8s ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
     }
 }
