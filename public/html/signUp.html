@@ -2,58 +2,58 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Audioslave | Fanpage</title>
-  <link rel="icon" href="./images/favicon.ico" />
-  <link rel="stylesheet" href="../styles.css" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audioslave | Fanpage</title>
+    <link rel="icon" href="./images/favicon.ico" />
+    <link rel="stylesheet" href="../styles.css" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
 
-  <!-- fondo contenedor (background container) -->
-  <div class="bg-[url('images/band1.jpg')] h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center">
+    <!-- fondo contenedor (background container) -->
+    <div class="bg-[url('images/band1.jpg')] h-screen bg-cover bg-center bg-no-repeat flex justify-center items-center">
 
-    <!-- contenedor del formulario (form container) -->
-    <div
-      class="flex flex-col justify-center items-center text-center w-10/12 max-w-md h-auto rounded-2xl bg-black bg-opacity-75 text-red-600 border-2 border-orange-700 shadow-lg shadow-red-700 p-4">
+        <!-- contenedor del formulario (form container) -->
+        <div
+            class="flex flex-col justify-center items-center text-center w-10/12 max-w-md h-auto rounded-2xl bg-black bg-opacity-75 text-red-600 border-2 border-orange-700 shadow-lg shadow-red-700 p-4">
 
-      <h3 class="text-center text-2xl font-bold mb-2 tracking-wider">Register</h3>
+            <h3 class="text-center text-2xl font-bold mb-2 tracking-wider">Register</h3>
 
-      <!-- formulario -->
-      <form method="post" class="w-full">
+            <!-- formulario -->
+            <form method="post" class="w-full">
 
-        <input type="text" name="name" id="name" placeholder="Name" autocomplete="name" required
-          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none"/>
+                <input type="text" name="name" id="name" placeholder="Name" autocomplete="name" required
+                    class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <input type="text" name="lastName" id="lastName" placeholder="Last Name" required
-          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
+                <input type="text" name="lastName" id="lastName" placeholder="Last Name" required
+                    class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required
-          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
+                <input type="email" name="email" id="email" placeholder="Email" autocomplete="email" required
+                    class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <input type="password" name="password" id="password" placeholder="Password" minlength="6" required
-          class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none"/>
+                <input type="password" name="password" id="password" placeholder="Password" minlength="6" required
+                    class="w-4/5 h-auto py-2 px-3 my-4 focus:border-orange-500 focus:border rounded-lg border bg-black border-orange-700 outline-none" />
 
-        <!-- boton registarte (button register) -->
-        <button id="buttonRegister"
-        class="w-4/5 bg-orange-700 p-2 text-black rounded font-semibold my-4 hover:bg-orange-600 active:bg-orange-500 tracking-widest">Submit</button>
+                <!-- boton registarte (button register) -->
+                <button id="buttonRegister"
+                    class="w-4/5 bg-orange-700 p-2 text-black rounded font-semibold my-4 hover:bg-orange-600 active:bg-orange-500 tracking-widest">Submit</button>
 
-      </form>
+            </form>
 
-      <!-- párrafo link de login (link paragraph to login) -->
-      <p class="mt-2">Have an Account?
-        <a href="./login.html" class="underline text-orange-500 visited:text-orange-700">Sign In</a>
-      </p>
+            <!-- párrafo link de login (link paragraph to login) -->
+            <p class="mt-2">Have an Account?
+                <a href="./login.html" class="underline text-orange-500 visited:text-orange-700">Sign In</a>
+            </p>
+
+        </div>
 
     </div>
 
-  </div>
-
-  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="../js/signUp.js"></script>
+    <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/signUp.js"></script>
 </body>
 
 </html>

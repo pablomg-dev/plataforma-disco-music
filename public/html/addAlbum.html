@@ -2,102 +2,105 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Audioslave | Fanpage</title>
-  <link rel="stylesheet" href="../styles.css" />
-  <link rel="icon" href="./images/favicon.ico" />
-  <script src="https://cdn.tailwindcss.com"></script>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Audioslave | Fanpage</title>
+    <link rel="stylesheet" href="../styles.css" />
+    <link rel="icon" href="./images/favicon.ico" />
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body>
 
-  <!-- contenedor (container) -->
-  <div class="flex flex-row ">
+    <!-- contenedor (container) -->
+    <div class="flex flex-row ">
 
-    <!-- sidebar -->
-    <div class="bg-black h-screen w-64 text-red-600 text-center border border-orange-700">
+        <!-- sidebar -->
+        <div class="bg-black h-screen w-64 text-red-600 text-center border border-orange-700">
 
-      <!-- imagen de usuario (image user) -->
-      <img src="./images/user-image.png" alt="imagen usuario" class="w-28 mx-auto rounded-full mt-8 bg-orange-600 aniSidebar">
+            <!-- imagen de usuario (image user) -->
+            <img src="./images/user-image.png" alt="imagen usuario"
+                class="w-28 mx-auto rounded-full mt-8 bg-orange-600 aniSidebar">
 
-      <!-- nombre de usuario (username) -->
-      <div class="border-b border-orange-700 py-2.5 font-medium text-orange-600"><span id="username"></span></div>
+            <!-- nombre de usuario (username) -->
+            <div class="border-b border-orange-700 py-2.5 font-medium text-orange-600"><span id="username"></span></div>
 
-      <!-- opciones de la sidebar (sidebar options) -->
-      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black aniSidebar">
-        <a href="./home.html">Other Albums</a>
-      </div>
+            <!-- opciones de la sidebar (sidebar options) -->
+            <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black aniSidebar">
+                <a href="./home.html">Other Albums</a>
+            </div>
 
-      <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black aniSidebar">
-        <span id="logout">Log Out</span>
-      </div>
+            <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black aniSidebar">
+                <span id="logout">Log Out</span>
+            </div>
 
-      <!-- imagen logo de la banda (image logo band) -->
-      <div>
-        <img src="./images/audioslave-logo-1.png" alt="audioslave logo" class="aniSidebar">
-      </div>
+            <!-- imagen logo de la banda (image logo band) -->
+            <div>
+                <img src="./images/audioslave-logo-1.png" alt="audioslave logo" class="aniSidebar">
+            </div>
+
+        </div>
+
+        <!-- contenido (content) -->
+        <div class="h-screen w-full bg-[url('images/band3.jpg')] bg-center bg-cover bg-no-repeat overflow-auto">
+
+            <h3 class="text-2xl font-semibold text-black text-center mt-10 mb-5 tracking-wider">Add Album</h3>
+
+            <div class="flex justify-center text-center">
+
+                <!-- formulario para agregar un album (form to add an album) -->
+                <form class="w-1/2">
+
+                    <label class="block font-semibold">Title
+
+                        <input type="text" name="title" required
+                            class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"
+                            id="title">
+
+                    </label>
+
+                    <label class="block font-semibold">Release Year
+
+                        <input type="number" name="yearOfRelease" required
+                            class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"
+                            id="yearOfRelease">
+
+                    </label>
+
+                    <label class="block font-semibold">Description
+
+                        <textarea name="description" cols="30" rows="8" name="description" required
+                            class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"
+                            id="description"></textarea>
+
+                    </label>
+
+                    <label class="block font-semibold">Add Album Cover (URL)
+
+                        <input type="url" name="cover" placeholder="https://www..."
+                            class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"
+                            id="cover">
+
+                    </label>
+
+                    <!-- botones (buttons) -->
+                    <button class="mt-3 mr-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4"
+                        id="addButton">Add Album</button>
+
+                    <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4"
+                        id="buttonCancel">Cancel</button>
+
+                </form>
+
+            </div>
+
+        </div>
 
     </div>
 
-    <!-- contenido (content) -->
-    <div class="h-screen w-full bg-[url('images/band3.jpg')] bg-center bg-cover bg-no-repeat overflow-auto">
-
-      <h3 class="text-2xl font-semibold text-black text-center mt-10 mb-5 tracking-wider">Add Album</h3>
-
-      <div class="flex justify-center text-center">
-
-        <!-- formulario para agregar un album (form to add an album) -->
-        <form class="w-1/2">
-
-          <label class="block font-semibold">Title
-
-            <input type="text" name="title" required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="title">
-
-          </label>
-
-          <label class="block font-semibold">Release Year
-
-            <input type="number" name="yearOfRelease" required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"
-              id="yearOfRelease">
-
-          </label>
-
-          <label class="block font-semibold">Description
-
-            <textarea name="description" cols="30" rows="8" name="description" required
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700"
-              id="description"></textarea>
-
-          </label>
-
-          <label class="block font-semibold">Add Album Cover (URL)
-
-            <input type="url" name="cover" placeholder="https://www..."
-              class="block w-full my-2 text-base py-1 px-3 text-red-600 rounded shadow-md shadow-red-700" id="cover">
-
-          </label>
-
-          <!-- botones (buttons) -->
-          <button class="mt-3 mr-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4"
-            id="addButton">Add Album</button>
-
-          <button class="mt-3 font-semibold p-2 bg-orange-700 rounded shadow-md shadow-red-700 w-1/4"
-            id="buttonCancel">Cancel</button>
-
-        </form>
-
-      </div>
-
-    </div>
-
-  </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
-  <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-  <script src="../js/addAlbum.js" type="module"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/addAlbum.js" type="module"></script>
 </body>
 
 </html>

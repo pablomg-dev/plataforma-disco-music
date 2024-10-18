@@ -2,82 +2,82 @@
 <html lang="en">
 
 <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Audioslave | Fanpage</title>
-        <link rel="stylesheet" href="../styles.css">
-        <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
-        <script src="https://cdn.tailwindcss.com"></script>
-        <script src="https://kit.fontawesome.com/17f5a43e6f.js" crossorigin="anonymous"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audioslave | Fanpage</title>
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="shortcut icon" href="./images/favicon.ico" type="image/x-icon">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://kit.fontawesome.com/17f5a43e6f.js" crossorigin="anonymous"></script>
 </head>
 
 <body>
 
-        <div class="bg-[url('images/band3.jpg')] h-screen bg-center bg-cover bg-no-repeat overflow-auto">
+    <!-- fondo contenedor (background container) -->
+    <div class="bg-[url('images/band3.jpg')] h-screen bg-center bg-cover bg-no-repeat overflow-auto">
 
-                
-                <!-- párrafo de saludo y nombre usuario (greeting paragraph and username) -->
-                <p class="m-4">
-                        <!-- <i class="fa-solid fa-ticket fa-rotate-90 fa-xl"></i> -->
-                        <i></i> <span id="welcome"></span>
-                </p>
+        <!-- párrafo de saludo y nombre usuario (greeting paragraph and username) -->
+        <p class="m-4">
+            <!-- <i class="fa-solid fa-ticket fa-rotate-90 fa-xl"></i> -->
+            <i></i> <span id="welcome"></span>
+        </p>
 
-                <h2 class="text-black text-xl sm:text-2xl md:text-3xl font-semibold mt-19 mb-4 sm:mb-5 text-center">Tour
-                        & Dates</h2>
+        <h2 class="text-black text-xl sm:text-2xl md:text-3xl font-semibold mt-19 mb-4 sm:mb-5 lg:mb-8 text-center">Tour
+            & Dates</h2>
 
-                <!-- grilla de fecha, ciudad y botón de comprar tickets (date grid, city and buy tickets button) -->
-                <section
-                        class="grid grid-cols-1 sm:grid-cols-3 sm:gap-2 sm:text-lg md:text-xl w-9/12 justify-items-center mx-auto border rounded-2xl border-red-700 shadow-lg shadow-red-700 bg-black bg-opacity-65 text-red-500">
+        <!-- grilla de fecha, ciudad y botón de comprar tickets (date grid, city and buy tickets button) -->
+        <section
+            class="grid gap-3 sm:grid-rows-6 sm:gap-4 lg:grid-cols-3 lg:gap-5 sm:text-lg md:text-xl w-9/12 justify-items-center py-3 mx-auto border rounded-2xl border-red-700 shadow-lg shadow-red-700 bg-black bg-opacity-65 text-red-500">
 
-                        <div class="font-bold sm:font-normal">07 Jan, 2024</div>
-                        <div class="mb-1 sm:mb-0 sm:p-1">Los Angeles, CA</div>
-                        <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Los Angeles"
-                                        class="border-2 border-red-700 rounded-lg text-red-300"
-                                        onclick="getTickets('Los Angeles')">Tickets</button></div>
+            <div class="text-red-400 font-bold sm:font-normal">07 Jan, 2024</div>
+            <div>Los Angeles, CA</div>
+            <div><button id="buy Los Angeles"
+                    class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets('Los Angeles')">Tickets</button></div>
 
-                        <div class="font-bold sm:font-normal">15 Jan, 2024</div>
-                        <div class="mb-1 sm:mb-0 sm:p-1">San Francisco, CA</div>
-                        <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Los Angeles"
-                                        class="border-2 border-red-700 rounded-lg text-red-300"
-                                        onclick="getTickets('Los Angeles')">Tickets</button></div>
+            <div class="text-red-400 font-bold sm:font-normal">15 Jan, 2024</div>
+            <div>San Francisco, CA</div>
+            <div><button id="buy Los Angeles"
+                    class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets('Los Angeles')">Tickets</button></div>
 
-                        <div class="font-bold sm:font-normal">25 Jan, 2024</div>
-                        <div class="mb-1 sm:mb-0 sm:p-1">Phoenix, AZ</div>
-                        <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Phoenix"
-                                        class="border-2 border-red-700 rounded-lg text-red-300"
-                                        onclick="getTickets(`Phoenix`)">Tickets</button></div>
+            <div class="text-red-400 font-bold sm:font-normal">25 Jan, 2024</div>
+            <div>Phoenix, AZ</div>
+            <div><button id="buy Phoenix"
+                    class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Phoenix`)">Tickets</button></div>
 
-                        <div class="font-bold sm:font-normal">03 Feb, 2024</div>
-                        <div class="mb-1 sm:mb-0 sm:p-1">Tucson, AZ</div>
-                        <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Tucson"
-                                        class="border-2 border-red-700 rounded-lg text-red-300"
-                                        onclick="getTickets(`Tucson`)">Tickets</button></div>
+            <div class="text-red-400 font-bold sm:font-normal">03 Feb, 2024</div>
+            <div>Tucson, AZ</div>
+            <div><button id="buy Tucson"
+                    class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Tucson`)">Tickets</button></div>
 
-                        <div class="font-bold sm:font-normal">13 Feb, 2024</div>
-                        <div class="mb-1 sm:mb-0 sm:p-1">Salt Lake City, UT</div>
-                        <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Sal Lake City"
-                                        class="border-2 border-red-700 rounded-lg text-red-300"
-                                        onclick="getTickets(`Sal Lake City`)">Tickets</button></div>
+            <div class="text-red-400 font-bold sm:font-normal">13 Feb, 2024</div>
+            <div>Salt Lake City, UT</div>
+            <div><button id="buy Sal Lake City"
+                    class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Sal Lake City`)">Tickets</button></div>
 
-                        <div class="font-bold sm:font-normal">27 Feb, 2024</div>
-                        <div class="mb-1 sm:mb-0 sm:p-1">Denver, CO</div>
-                        <div class="mb-2 sm:mb-0 sm:p-1"><button id="buy Denver"
-                                        class="border-2 border-red-700 rounded-lg text-red-300"
-                                        onclick="getTickets(`Denver`)">Tickets</button></div>
+            <div class="text-red-400 font-bold sm:font-normal">27 Feb, 2024</div>
+            <div>Denver, CO</div>
+            <div><button id="buy Denver"
+                    class="border-2 border-red-700 rounded-lg text-red-300"
+                    onclick="getTickets(`Denver`)">Tickets</button></div>
 
-                </section>
+        </section>
 
-                <!-- imagen logo de la banda que enlaza al home (logo image of the band that links to the home) -->
-                <div class="flex justify-center">
-                        <a href="./home.html"><img src="images/audioslave-logo-1.png" alt="logo audioslave"
-                                        class="w-36 sm:w-44 md:w-52 lg:w-60"></a>
-                </div>
-
+        <!-- imagen logo de la banda que enlaza al home (logo image of the band that links to the home) -->
+        <div class="flex justify-center">
+            <a href="./home.html"><img src="images/audioslave-logo-1.png" alt="logo audioslave"
+                    class="w-36 sm:w-44 md:w-52 lg:w-60"></a>
         </div>
 
-        <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-        <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
-        <script src="../js/tours.js"></script>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="../js/tours.js"></script>
 </body>
 
 </html>
