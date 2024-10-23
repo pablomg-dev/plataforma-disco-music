@@ -13,7 +13,7 @@ Tienen la posibilidad de agregar, actualiza, eliminar album de bandas.
 A su vez pueden agregar canciones con sus respectivos videos, editar y eliminar las mismas.
 Pueden comprar tickets para los próximos recitales. (ficticio)
 
-1. Ve a mi [repositorio](http://https://github.com/pmg369/plataforma-disco-music "repositorio").
+1. Ve a mi [repositorio](http://https://github.com/pablomg-dev/plataforma-disco-music "repositorio").
 2. Haz click en el botón que dice fork.
 3. Luego sobre el botón de color verde : `<> Code`.
 4. Copia la URL que allí aparece.
@@ -63,7 +63,7 @@ They have the ability to add, update and delete band albums.
 In turn, they can add songs with their respective videos, edit and delete them.
 You can buy tickets for upcoming recitals. (fictional)
 
-1. Go to my [repository](http://https://github.com/pmg369/plataforma-disco-music "repository").
+1. Go to my [repository](http://https://github.com/pablomg-dev/plataforma-disco-music "repository").
 2. Click on the button that says fork.
 3. Then on the green button: `<> Code`.
 4. Copy the URL that appears there.
