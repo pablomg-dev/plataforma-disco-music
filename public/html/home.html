@@ -13,22 +13,21 @@
 
 <body>
 
-    <!-- contenedor (container) -->
-    <div class="flex flex-row">
+    <div class="flex flex-col md:flex-row h-screen">
 
-        <!-- sidebar -->
-        <div class="bg-black h-screen w-64 text-red-600 text-center border border-orange-700">
+        <div id="sidebar" class="bg-black h-full w-64 text-red-600 text-center border-r border-orange-700
+                                 hidden md:block absolute md:relative z-20"> 
+            <button id="closeSidebar" class="md:hidden absolute top-4 right-4 text-orange-600 text-2xl focus:outline-none">
+                <i class="fas fa-times"></i>
+            </button>
 
-            <!-- imagen de usuario (image user) -->
             <img src="./images/user-image.png" alt="user image"
                 class="w-28 mx-auto rounded-full mt-8 bg-orange-600 aniSidebar">
 
-            <!-- nombre de usuario (username) -->
             <div class="border-b border-orange-700 py-2.5 font-medium text-orange-600">
                 <span id="username"></span>
             </div>
 
-            <!-- opciones de la sidebar (sidebar options) -->
             <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black aniSidebar">
                 <a href="./addAlbum.html">Add Album</a>
             </div>
@@ -38,22 +37,23 @@
             </div>
 
             <div class="border-b border-orange-700 py-2.5 hover:bg-orange-700 hover:text-black aniSidebar">
-                <span id="logout">Log Out</span>
-            </div>
+                <span id="logout" class="cursor-pointer">Log Out</span> </div>
 
-            <!-- imagen logo de la banda (image logo band) -->
-            <div>
-                <img src="./images/audioslave-logo-1.png" alt="audioslave logo" class="aniSidebar">
-            </div>
+            <div class="mt-auto py-4"> <img src="./images/audioslave-logo-1.png" alt="audioslave logo" class="aniSidebar w-auto mx-auto max-w-[80%]"> 
+                </div>
 
         </div>
 
-        <!-- contenido (content) -->
-        <div class="h-screen w-full bg-[url('images/band3.jpg')] bg-center bg-cover bg-no-repeat overflow-auto">
+        <div class="h-screen w-full bg-[url('images/band3.jpg')] bg-center bg-cover bg-no-repeat overflow-auto
+                    relative"> <button id="openSidebar" class="md:hidden absolute top-4 left-4 text-orange-600 text-3xl focus:outline-none z-10">
+                <i class="fas fa-bars"></i>
+            </button>
 
-            <h1 class="text-3xl font-semibold text-black mx-36 mt-10 mb-5 tracking-wider">Audioslave</h1>
+            <h1 class="text-3xl sm:text-4xl font-semibold text-black mx-4 sm:mx-10 md:mx-16 lg:mx-36 mt-16 sm:mt-20 md:mt-10 mb-5 tracking-wider text-center md:text-left">
+                Audioslave
+            </h1>
 
-            <p class="text-black mx-36 mb-5 text-justify">
+            <p class="text-black text-base sm:text-lg mx-4 sm:mx-10 md:mx-16 lg:mx-36 mb-5 text-justify leading-relaxed">
                 Audioslave was an American alternative rock supergroup formed in Los Angeles, California, in 2001 by
                 Soundgarden
                 vocalist Chris Cornell and the instrumental section of Rage Against the Machine: Tom Morello (guitar),
@@ -67,15 +67,54 @@
                 was created by fusing the hard rock of the 1970s with the alternative rock of the 1990s.
             </p>
 
-            <h2 class="text-2xl font-semibold text-black text-center my-8 tracking-wider">Albums</h2>
+            <h2 class="text-2xl sm:text-3xl font-semibold text-black text-center my-8 tracking-wider">Albums</h2>
 
-            <div class="flex justify-center flex-wrap text-center mx-36 gap-10" id="albumsDiv"></div>
-
-        </div>
+            <div class="flex justify-center flex-wrap text-center mx-4 sm:mx-10 md:mx-16 lg:mx-36 gap-6 sm:gap-8 md:gap-10 pb-8" id="albumsDiv"></div>
+            </div>
 
         <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="../js/home.js" type="module"></script>
+        <script>
+            document.addEventListener('DOMContentLoaded', () => {
+                const sidebar = document.getElementById('sidebar');
+                const openSidebarBtn = document.getElementById('openSidebar');
+                const closeSidebarBtn = document.getElementById('closeSidebar');
+
+                openSidebarBtn.addEventListener('click', () => {
+                    sidebar.classList.remove('hidden');
+                    sidebar.classList.add('flex', 'flex-col', 'h-screen'); // Añade flex y flex-col para el layout interno
+                });
+
+                closeSidebarBtn.addEventListener('click', () => {
+                    sidebar.classList.add('hidden');
+                    sidebar.classList.remove('flex', 'flex-col', 'h-screen');
+                });
+
+                // Cierra la sidebar si la pantalla se redimensiona a un tamaño de tablet o desktop
+                window.addEventListener('resize', () => {
+                    if (window.innerWidth >= 768) { // Corresponde al breakpoint 'md' de Tailwind
+                        sidebar.classList.remove('hidden', 'flex', 'flex-col', 'h-screen');
+                        sidebar.classList.add('block');
+                    } else {
+                        // Asegura que el botón de hamburguesa sea visible si la sidebar está oculta en móvil
+                        if (sidebar.classList.contains('hidden')) {
+                            openSidebarBtn.classList.remove('hidden');
+                        }
+                    }
+                });
+
+                // La sidebar esté visible en pantallas grandes al cargar
+                if (window.innerWidth >= 768) {
+                    sidebar.classList.remove('hidden');
+                    sidebar.classList.add('block');
+                } else {
+                    // En móviles, oculta la sidebar por defecto y muestra el botón de hamburguesa
+                    sidebar.classList.add('hidden');
+                    openSidebarBtn.classList.remove('hidden');
+                }
+            });
+        </script>
 </body>
 
 </html>
