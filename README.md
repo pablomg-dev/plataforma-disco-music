@@ -9,7 +9,7 @@ El objetivo final es que cualquier usuario pueda registrarse, que pueda editar l
 
 #### Funcionalidades principales:
 Los usuario se pueden registrar para tener su propia cuenta personal.
-Tienen la posibilidad de agregar, actualiza, eliminar album de bandas.
+Tienen la posibilidad de agregar, actualizar y eliminar un album.
 A su vez pueden agregar canciones con sus respectivos videos, editar y eliminar las mismas.
 Pueden comprar tickets para los próximos recitales. (ficticio)
 
@@ -19,11 +19,11 @@ Pueden comprar tickets para los próximos recitales. (ficticio)
 4. Copia la URL que allí aparece.
 5. Abre tu terminal y pon el comando de  `git clone <url>`.
 6. Entra a la carpeta del proyecto y abrelo desde tu IDE.
-7. Listo!
+7. ¡Listo!
 
 #### Requisitos para desplegar la aplicación:
 - Tener Node.js para ejecutar de manera local el proyecto.
-- Tener una base de datos en MongoDB.
+- Tener una base de datos en MongoDB Atlas.
 
 
 #### Instalación:
