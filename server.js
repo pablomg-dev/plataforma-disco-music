@@ -1,7 +1,6 @@
 const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
-const path = require("path");
 const mongoose = require("mongoose");
 
 // Usamos variables de entorno para ocultar información sensible

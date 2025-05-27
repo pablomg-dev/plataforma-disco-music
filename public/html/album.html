@@ -12,11 +12,12 @@
 </head>
 
 <body>
-
+    <button id="openSidebar" class="md:hidden absolute top-4 left-4 text-orange-600 text-3xl focus:outline-none z-30">
+        <i class="fas fa-bars"></i>
+    </button>
     <div class="flex flex-col md:flex-row h-screen">
 
-        <div id="sidebar" class="bg-black h-full w-64 text-red-600 text-center border-r border-orange-700
-                                 hidden md:block absolute md:relative z-20"> 
+        <div id="sidebar" class="bg-black h-full w-64 text-red-600 text-center border-r border-orange-700 hidden absolute z-20"> 
             
             <button id="closeSidebar" class="md:hidden absolute top-4 right-4 text-orange-600 text-2xl focus:outline-none">
                 <i class="fas fa-times"></i>
@@ -54,7 +55,7 @@
         <div class="bg-[url('images/band3.jpg')] h-screen w-full bg-center bg-cover bg-no-repeat overflow-auto
                     relative p-4 sm:p-6 md:p-8 lg:p-10" id="albumDiv"> 
             
-            <button id="openSidebar" class="md:hidden absolute top-4 left-4 text-orange-600 text-3xl focus:outline-none z-10">
+            <button id="openSidebar" class="md:hidden absolute top-4 left-4 text-orange-600 text-3xl focus:outline-none z-30">
                 <i class="fas fa-bars"></i>
             </button>
 
@@ -66,69 +67,6 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="../js/album.js" type="module"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const sidebar = document.getElementById('sidebar');
-            const openSidebarBtn = document.getElementById('openSidebar');
-            const closeSidebarBtn = document.getElementById('closeSidebar');
-            const loadingMessage = document.getElementById('loadingMessage'); 
-
-            if (loadingMessage) {
-                loadingMessage.classList.add('hidden'); 
-            }
-
-            // Es importante verificar si los botones existen antes de añadir el event listener
-            if (openSidebarBtn) {
-                openSidebarBtn.addEventListener('click', () => {
-                    sidebar.classList.remove('hidden');
-                    sidebar.classList.add('flex', 'flex-col', 'h-screen');
-                    openSidebarBtn.classList.add('hidden');
-                });
-            }
-
-            if (closeSidebarBtn) {
-                closeSidebarBtn.addEventListener('click', () => {
-                    sidebar.classList.add('hidden');
-                    sidebar.classList.remove('flex', 'flex-col', 'h-screen');
-                    openSidebarBtn.classList.remove('hidden');
-                });
-            }
-
-            window.addEventListener('resize', () => {
-                if (window.innerWidth >= 768) { 
-                    sidebar.classList.remove('hidden', 'flex', 'flex-col', 'h-screen');
-                    sidebar.classList.add('block');
-                    if (openSidebarBtn) { // Verificar antes de manipular
-                        openSidebarBtn.classList.add('hidden'); 
-                    }
-                } else {
-                    if (sidebar.classList.contains('hidden')) {
-                        if (openSidebarBtn) { // Verificar antes de manipular
-                            openSidebarBtn.classList.remove('hidden');
-                        }
-                    } else {
-                        if (openSidebarBtn) { // Verificar antes de manipular
-                            openSidebarBtn.classList.add('hidden');
-                        }
-                    }
-                }
-            });
-
-            // Inicializar la visibilidad de la sidebar y el botón al cargar la página
-            if (window.innerWidth >= 768) {
-                sidebar.classList.remove('hidden');
-                sidebar.classList.add('block');
-                if (openSidebarBtn) { // Verificar antes de manipular
-                    openSidebarBtn.classList.add('hidden');
-                }
-            } else {
-                sidebar.classList.add('hidden');
-                if (openSidebarBtn) { // Verificar antes de manipular
-                    openSidebarBtn.classList.remove('hidden');
-                }
-            }
-        });
-    </script>
 </body>
 
 </html>

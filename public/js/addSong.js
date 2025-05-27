@@ -92,3 +92,42 @@ buttonLogout.addEventListener("click", () => {
 
 // Función que sirve para que solo accendan los usuarios logueados.
 onLoad();
+
+document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const openSidebarBtn = document.getElementById('openSidebar');
+    const closeSidebarBtn = document.getElementById('closeSidebar');
+
+    if (openSidebarBtn && sidebar) {
+        openSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.remove('hidden');
+            sidebar.classList.add('flex', 'flex-col', 'h-screen');
+        });
+    }
+
+    if (closeSidebarBtn && sidebar) {
+        closeSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.add('hidden');
+            sidebar.classList.remove('flex', 'flex-col', 'h-screen');
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebar.classList.remove('hidden', 'flex', 'flex-col', 'h-screen', 'absolute');
+            sidebar.classList.add('block', 'relative');
+        } else {
+            sidebar.classList.remove('block', 'relative');
+            sidebar.classList.add('hidden', 'absolute');
+        }
+    });
+
+    // Inicializa el estado correcto al cargar
+    if (window.innerWidth >= 768) {
+        sidebar.classList.remove('hidden', 'flex', 'flex-col', 'h-screen', 'absolute');
+        sidebar.classList.add('block', 'relative');
+    } else {
+        sidebar.classList.remove('block', 'relative');
+        sidebar.classList.add('hidden', 'absolute');
+    }
+});

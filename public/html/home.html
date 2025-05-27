@@ -75,46 +75,6 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert"></script>
         <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
         <script src="../js/home.js" type="module"></script>
-        <script>
-            document.addEventListener('DOMContentLoaded', () => {
-                const sidebar = document.getElementById('sidebar');
-                const openSidebarBtn = document.getElementById('openSidebar');
-                const closeSidebarBtn = document.getElementById('closeSidebar');
-
-                openSidebarBtn.addEventListener('click', () => {
-                    sidebar.classList.remove('hidden');
-                    sidebar.classList.add('flex', 'flex-col', 'h-screen'); // Añade flex y flex-col para el layout interno
-                });
-
-                closeSidebarBtn.addEventListener('click', () => {
-                    sidebar.classList.add('hidden');
-                    sidebar.classList.remove('flex', 'flex-col', 'h-screen');
-                });
-
-                // Cierra la sidebar si la pantalla se redimensiona a un tamaño de tablet o desktop
-                window.addEventListener('resize', () => {
-                    if (window.innerWidth >= 768) { // Corresponde al breakpoint 'md' de Tailwind
-                        sidebar.classList.remove('hidden', 'flex', 'flex-col', 'h-screen');
-                        sidebar.classList.add('block');
-                    } else {
-                        // Asegura que el botón de hamburguesa sea visible si la sidebar está oculta en móvil
-                        if (sidebar.classList.contains('hidden')) {
-                            openSidebarBtn.classList.remove('hidden');
-                        }
-                    }
-                });
-
-                // La sidebar esté visible en pantallas grandes al cargar
-                if (window.innerWidth >= 768) {
-                    sidebar.classList.remove('hidden');
-                    sidebar.classList.add('block');
-                } else {
-                    // En móviles, oculta la sidebar por defecto y muestra el botón de hamburguesa
-                    sidebar.classList.add('hidden');
-                    openSidebarBtn.classList.remove('hidden');
-                }
-            });
-        </script>
 </body>
 
 </html>

@@ -1,6 +1,5 @@
 const express = require("express");
 const router = express.Router();
-const cookieParser = require("cookie-parser");
 
 // Requerimos los models.
 const User = require("../models/User");
@@ -9,10 +8,6 @@ const Album = require("../models/Album");
 // Requerimos bcrypt y jsonwebtoken.
 const bcrypt = require("bcrypt"); // <-- Descomentado
 const jwt = require("jsonwebtoken");
-
-// Usamos variables de entorno para ocultar información sensible.
-const dotenv = require("dotenv");
-dotenv.config();
 
 // Guardamos la secret en una variable de entorno para ocultarla.
 const secret = process.env.SECRET;

@@ -108,6 +108,8 @@ const deleteAlbum = async (albumId) => { // Cambiado 'album' a 'albumId' para ma
     }
 };
 
+
+
 // Log Out.
 // Capturar el Button Log Out.
 const buttonLogout = document.querySelector("#logout");
@@ -120,3 +122,34 @@ buttonLogout.addEventListener("click", () => {
 
 // Función que sirve para que solo accedan los usuarios logueados.
 onLoad();
+
+// Manejo de la sidebar responsive
+document.addEventListener('DOMContentLoaded', () => {
+    const sidebar = document.getElementById('sidebar');
+    const openSidebarBtn = document.getElementById('openSidebar');
+    const closeSidebarBtn = document.getElementById('closeSidebar');
+
+    if (openSidebarBtn && sidebar) {
+        openSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.remove('hidden');
+            sidebar.classList.add('flex', 'flex-col', 'h-screen');
+        });
+    }
+
+    if (closeSidebarBtn && sidebar) {
+        closeSidebarBtn.addEventListener('click', () => {
+            sidebar.classList.add('hidden');
+            sidebar.classList.remove('flex', 'flex-col', 'h-screen');
+        });
+    }
+
+    window.addEventListener('resize', () => {
+        if (window.innerWidth >= 768) {
+            sidebar.classList.remove('hidden', 'flex', 'flex-col', 'h-screen');
+            sidebar.classList.add('block');
+        } else {
+            sidebar.classList.remove('block');
+            sidebar.classList.add('hidden');
+        }
+    });
+});
