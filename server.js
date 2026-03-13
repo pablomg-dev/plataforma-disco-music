@@ -8,7 +8,7 @@ const dotenv = require("dotenv");
 dotenv.config();
 
 // Guardamos en constantes las variables de entorno para poder utilizarlas
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3000;
 const dbUser = process.env.USER_MONGO;
 const password = process.env.PASSWORD_MONGO;
 
@@ -40,6 +40,16 @@ app.use("/", routes);
 // Conectamos con la Base de Datos.
 const connectMongo = async () => {
   try {
+    if (!dbUser || !password) {
+      throw new Error(
+        "Faltan variables de entorno USER_MONGO y/o PASSWORD_MONGO para conectar MongoDB.",
+      );
+    }
+
+    if (!process.env.SECRET) {
+      throw new Error("Falta la variable de entorno SECRET para JWT.");
+    }
+
     await mongoose.connect(url);
     app.listen(PORT, () => {
       console.log(

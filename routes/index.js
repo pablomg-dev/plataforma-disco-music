@@ -8,6 +8,7 @@ const Album = require("../models/Album");
 // Requerimos bcrypt y jsonwebtoken.
 const bcrypt = require("bcrypt"); // <-- Descomentado
 const jwt = require("jsonwebtoken");
+const authMiddleware = require("../middlewares/auth");
 
 // Guardamos la secret en una variable de entorno para ocultarla.
 const secret = process.env.SECRET;
@@ -21,6 +22,11 @@ const hashPassword = async (password) => {
     return hash;
 };
 
+const isValidEmail = (email) => {
+    const regex = /^[\w-.]+@([\w-]+\.)+[\w-]{2,4}$/;
+    return regex.test(email);
+};
+
 // --- RUTAS ---
 
 // Ruta para el Login del usuario.
@@ -28,6 +34,10 @@ router.post("/login", async (req, res) => {
     try {
         const email = req.body.email;
         const password = req.body.password; // Contraseña en texto plano del formulario
+
+        if (!email || !password) {
+            return res.status(400).send({ message: "Email y contraseña son obligatorios." });
+        }
 
         // 1. Buscar el usuario por email
         const user = await User.findOne({ email: email });
@@ -101,6 +111,18 @@ router.post("/createuser", async (req, res) => {
     const { name, lastName, email, password } = req.body;
     
     try {
+        if (!name || !lastName || !email || !password) {
+            return res.status(400).send({ message: "Todos los campos son obligatorios." });
+        }
+
+        if (!isValidEmail(email)) {
+            return res.status(400).send({ message: "Debes ingresar un email válido." });
+        }
+
+        if (password.length < 6) {
+            return res.status(400).send({ message: "La contraseña debe tener al menos 6 caracteres." });
+        }
+
         // Hashear la contraseña antes de guardarla
         const hashedPassword = await hashPassword(password); // <-- Aquí se hashea
 
@@ -119,7 +141,7 @@ router.post("/createuser", async (req, res) => {
         if (error.code === 11000) {
             return res.status(409).send({ message: "El email ya está registrado. Por favor, usa otro." });
         }
-        res.status(500).send({ message: "Error interno del servidor al crear usuario.", error: error.message });
+        res.status(500).send({ message: "Error interno del servidor al crear usuario." });
     }
 });
 
@@ -140,8 +162,12 @@ router.get("/user/:id", async (req, res) => {
 });
 
 // Ruta para editar los datos de un usuario.
-router.put("/user/edit/:id", async (req, res) => {
+router.put("/user/edit/:id", authMiddleware, async (req, res) => {
     try {
+        if (req.user.id !== req.params.id) {
+            return res.status(403).send({ message: "No autorizado para editar este usuario." });
+        }
+
         const { password, ...updateData } = req.body; // Evitar que la contraseña se actualice directamente si no está hasheada
         
         // Si se intenta actualizar la contraseña, hashearla primero
@@ -158,7 +184,7 @@ router.put("/user/edit/:id", async (req, res) => {
         res.status(200).send(usuario);
     } catch (error) {
         console.error('Error al editar el usuario:', error);
-        res.status(500).send({ message: "Error interno del servidor al editar el usuario.", error: error.message });
+        res.status(500).send({ message: "Error interno del servidor al editar el usuario." });
     }
 });
 
@@ -188,18 +214,23 @@ router.get("/album/:id", async (req, res) => {
 });
 
 // Ruta para agregar un album.
-router.post("/album/add", async (req, res) => {
+router.post("/album/add", authMiddleware, async (req, res) => {
     try {
+        const { title, description, yearOfRelease } = req.body;
+        if (!title || !description || !yearOfRelease) {
+            return res.status(400).send({ message: "Faltan campos obligatorios para crear el álbum." });
+        }
+
         let album = await Album.create(req.body);
         res.status(201).send(album); // 201 Created
     } catch (error) {
         console.error('Error al agregar un álbum:', error);
-        res.status(500).send({ message: "Error interno del servidor al agregar álbum.", error: error.message });
+        res.status(500).send({ message: "Error interno del servidor al agregar álbum." });
     }
 });
 
 // Ruta para editar un album.
-router.put("/album/:idAlbum", async (req, res) => {
+router.put("/album/:idAlbum", authMiddleware, async (req, res) => {
     try {
         let album = await Album.findByIdAndUpdate(req.params.idAlbum, req.body, {
             new: true,
@@ -210,12 +241,12 @@ router.put("/album/:idAlbum", async (req, res) => {
         res.status(200).send(album);
     } catch (error) {
         console.error('Error al editar un álbum:', error);
-        res.status(500).send({ message: "Error interno del servidor al editar álbum.", error: error.message });
+        res.status(500).send({ message: "Error interno del servidor al editar álbum." });
     }
 });
 
 // Ruta para eliminar un album.
-router.delete("/album/:idAlbum", async (req, res) => {
+router.delete("/album/:idAlbum", authMiddleware, async (req, res) => {
     try {
         const result = await Album.findByIdAndDelete(req.params.idAlbum);
         if (!result) {
@@ -224,13 +255,18 @@ router.delete("/album/:idAlbum", async (req, res) => {
         res.status(200).send({ message: "Álbum eliminado exitosamente." });
     } catch (error) {
         console.error('Error al eliminar álbum:', error);
-        res.status(500).send({ message: "Error interno del servidor al eliminar álbum.", error: error.message });
+        res.status(500).send({ message: "Error interno del servidor al eliminar álbum." });
     }
 });
 
 // Ruta para agregar una canción al album.
-router.put("/song/:idAlbum", async (req, res) => {
+router.put("/song/:idAlbum", authMiddleware, async (req, res) => {
     try {
+        const { title, duration, link } = req.body;
+        if (!title || !duration || !link) {
+            return res.status(400).send({ message: "Faltan campos obligatorios para agregar canción." });
+        }
+
         let album = await Album.findById(req.params.idAlbum);
         if (!album) {
             return res.status(404).send({ message: "Álbum no encontrado para agregar canción." });
@@ -240,14 +276,18 @@ router.put("/song/:idAlbum", async (req, res) => {
         res.status(200).send(album);
     } catch (error) {
         console.error('Error al agregar una canción:', error);
-        res.status(500).send({ message: "Error interno del servidor al agregar canción.", error: error.message });
+        res.status(500).send({ message: "Error interno del servidor al agregar canción." });
     }
 });
 
 // Ruta para eliminar una canción del album.
-router.put("/song/delete/:idAlbum", async (req, res) => {
+router.put("/song/delete/:idAlbum", authMiddleware, async (req, res) => {
     let idSong = req.query.idSong;
     try {
+        if (!idSong) {
+            return res.status(400).send({ message: "Debes enviar el idSong." });
+        }
+
         let album = await Album.findById(req.params.idAlbum);
         if (!album) {
             return res.status(404).send({ message: "Álbum no encontrado para eliminar canción." });
@@ -268,7 +308,7 @@ router.put("/song/delete/:idAlbum", async (req, res) => {
         res.status(200).send({ message: "Canción eliminada correctamente del álbum." });
     } catch (error) {
         console.error('Error al eliminar una canción:', error);
-        res.status(500).send({ message: "Error interno del servidor al eliminar canción.", error: error.message });
+        res.status(500).send({ message: "Error interno del servidor al eliminar canción." });
     }
 });
 
