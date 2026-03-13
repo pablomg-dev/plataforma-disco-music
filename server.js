@@ -2,6 +2,7 @@ const express = require("express");
 const app = express();
 const cookieParser = require("cookie-parser");
 const mongoose = require("mongoose");
+const { notFoundHandler, errorHandler } = require("./middlewares/errorHandler");
 
 // Usamos variables de entorno para ocultar información sensible
 const dotenv = require("dotenv");
@@ -36,6 +37,10 @@ app.use("/health", (req, res) => res.sendStatus(200));
 
 // Nos lleva a las rutas
 app.use("/", routes);
+
+// Middlewares globales de manejo de errores
+app.use(notFoundHandler);
+app.use(errorHandler);
 
 // Conectamos con la Base de Datos.
 const connectMongo = async () => {

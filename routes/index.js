@@ -27,6 +27,12 @@ const isValidEmail = (email) => {
     return regex.test(email);
 };
 
+const createError = (status, message) => {
+    const error = new Error(message);
+    error.status = status;
+    return error;
+};
+
 // --- RUTAS ---
 
 // Ruta para el Login del usuario.
@@ -36,7 +42,7 @@ router.post("/login", async (req, res) => {
         const password = req.body.password; // Contraseña en texto plano del formulario
 
         if (!email || !password) {
-            return res.status(400).send({ message: "Email y contraseña son obligatorios." });
+            throw createError(400, "Email y contraseña son obligatorios.");
         }
 
         // 1. Buscar el usuario por email
@@ -45,7 +51,7 @@ router.post("/login", async (req, res) => {
         // Si el usuario no existe
         if (!user) {
             console.log('Intento de login fallido: Usuario no encontrado para email', email);
-            return res.status(401).send({ message: "Email o contraseña incorrectos." });
+            throw createError(401, "Email o contraseña incorrectos.");
         }
 
         // 2. Comparar la contraseña ingresada (texto plano) con la hasheada en la DB
@@ -68,11 +74,12 @@ router.post("/login", async (req, res) => {
         } else {
             // Si la contraseña no coincide
             console.log('Intento de login fallido: Contraseña incorrecta para email', email);
-            res.status(401).send({ message: "Email o contraseña incorrectos." });
+            throw createError(401, "Email o contraseña incorrectos.");
         }
     } catch (error) {
-        console.error('Error en la ruta /login:', error); // Mensaje de error detallado en la consola del servidor
-        res.status(500).send({ message: "Error interno del servidor al intentar iniciar sesión." }); // Mensaje genérico para el cliente
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al intentar iniciar sesión.",
+        });
     }
 });
 
@@ -82,27 +89,16 @@ router.post("/logout", async (req, res) => {
         res.clearCookie("token");
         res.sendStatus(204); // 204 No Content - Indica éxito sin contenido a devolver
     } catch (error) {
-        console.error('Error en la ruta /logout:', error);
-        res.status(500).send({ message: "Error interno del servidor al cerrar sesión." });
+        return res.status(500).send({ message: "Error interno del servidor al cerrar sesión." });
     }
 });
 
 // Ruta para restringir el acceso a quienes no se loguean.
-router.get("/me", (req, res) => {
+router.get("/me", authMiddleware, (req, res) => {
     try {
-        const token = req.cookies.token;
-        if (!token) {
-            return res.status(401).send("No hay token de autenticación.");
-        }
-        const payload = jwt.verify(token, secret);
-        res.status(200).send(payload);
+        res.status(200).send(req.user);
     } catch (error) {
-        console.error('Error en la ruta /me (autenticación JWT):', error);
-        // Si el token no es válido o expiró
-        if (error.name === 'TokenExpiredError' || error.name === 'JsonWebTokenError') {
-            return res.status(401).send("Token inválido o expirado.");
-        }
-        res.status(500).send("Error interno del servidor al verificar la sesión.");
+        return res.status(500).send({ message: "Error interno del servidor al verificar la sesión." });
     }
 });
 
@@ -112,15 +108,15 @@ router.post("/createuser", async (req, res) => {
     
     try {
         if (!name || !lastName || !email || !password) {
-            return res.status(400).send({ message: "Todos los campos son obligatorios." });
+            throw createError(400, "Todos los campos son obligatorios.");
         }
 
         if (!isValidEmail(email)) {
-            return res.status(400).send({ message: "Debes ingresar un email válido." });
+            throw createError(400, "Debes ingresar un email válido.");
         }
 
         if (password.length < 6) {
-            return res.status(400).send({ message: "La contraseña debe tener al menos 6 caracteres." });
+            throw createError(400, "La contraseña debe tener al menos 6 caracteres.");
         }
 
         // Hashear la contraseña antes de guardarla
@@ -134,14 +130,15 @@ router.post("/createuser", async (req, res) => {
         };
         
         await User.create(newUser);
-        res.status(201).send("Usuario creado exitosamente.");
+        res.status(201).send({ message: "Usuario creado exitosamente." });
     } catch (error) {
-        console.error('Error al crear usuario:', error);
         // Manejo específico para el error de email duplicado (código 11000 de MongoDB)
         if (error.code === 11000) {
             return res.status(409).send({ message: "El email ya está registrado. Por favor, usa otro." });
         }
-        res.status(500).send({ message: "Error interno del servidor al crear usuario." });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al crear usuario.",
+        });
     }
 });
 
@@ -150,14 +147,15 @@ router.get("/user/:id", async (req, res) => {
     try {
         let response = await User.findById(req.params.id);
         if (!response) {
-            return res.status(404).send({ message: "Usuario no encontrado." });
+            throw createError(404, "Usuario no encontrado.");
         }
         // Excluir la contraseña explícitamente en la respuesta
         const { password, ...userData } = response.toObject(); // toObject() para manipular el objeto Mongoose
         res.status(200).send({ User: userData });
     } catch (error) {
-        console.error('Error al solicitar usuario por ID:', error);
-        res.status(500).send({ message: "Error interno del servidor al solicitar usuario.", error: error.message });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al solicitar usuario.",
+        });
     }
 });
 
@@ -165,7 +163,7 @@ router.get("/user/:id", async (req, res) => {
 router.put("/user/edit/:id", authMiddleware, async (req, res) => {
     try {
         if (req.user.id !== req.params.id) {
-            return res.status(403).send({ message: "No autorizado para editar este usuario." });
+            throw createError(403, "No autorizado para editar este usuario.");
         }
 
         const { password, ...updateData } = req.body; // Evitar que la contraseña se actualice directamente si no está hasheada
@@ -179,12 +177,13 @@ router.put("/user/edit/:id", authMiddleware, async (req, res) => {
             new: true, // Devuelve el documento actualizado
         });
         if (!usuario) {
-            return res.status(404).send({ message: "Usuario no encontrado para editar." });
+            throw createError(404, "Usuario no encontrado para editar.");
         }
         res.status(200).send(usuario);
     } catch (error) {
-        console.error('Error al editar el usuario:', error);
-        res.status(500).send({ message: "Error interno del servidor al editar el usuario." });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al editar el usuario.",
+        });
     }
 });
 
@@ -194,8 +193,7 @@ router.get("/album/all", async (req, res) => {
         let albums = await Album.find();
         res.status(200).send(albums);
     } catch (error) {
-        console.error('Error al solicitar todos los álbumes:', error);
-        res.status(500).send({ message: "Error interno del servidor al solicitar álbumes.", error: error.message });
+        return res.status(500).send({ message: "Error interno del servidor al solicitar álbumes." });
     }
 });
 
@@ -204,12 +202,13 @@ router.get("/album/:id", async (req, res) => {
     try {
         let album = await Album.findById(req.params.id);
         if (!album) {
-            return res.status(404).send({ message: "Álbum no encontrado." });
+            throw createError(404, "Álbum no encontrado.");
         }
         res.status(200).send(album);
     } catch (error) {
-        console.error('Error al solicitar álbum específico:', error);
-        res.status(500).send({ message: "Error interno del servidor al solicitar álbum.", error: error.message });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al solicitar álbum.",
+        });
     }
 });
 
@@ -218,14 +217,15 @@ router.post("/album/add", authMiddleware, async (req, res) => {
     try {
         const { title, description, yearOfRelease } = req.body;
         if (!title || !description || !yearOfRelease) {
-            return res.status(400).send({ message: "Faltan campos obligatorios para crear el álbum." });
+            throw createError(400, "Faltan campos obligatorios para crear el álbum.");
         }
 
         let album = await Album.create(req.body);
         res.status(201).send(album); // 201 Created
     } catch (error) {
-        console.error('Error al agregar un álbum:', error);
-        res.status(500).send({ message: "Error interno del servidor al agregar álbum." });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al agregar álbum.",
+        });
     }
 });
 
@@ -236,12 +236,13 @@ router.put("/album/:idAlbum", authMiddleware, async (req, res) => {
             new: true,
         });
         if (!album) {
-            return res.status(404).send({ message: "Álbum no encontrado para editar." });
+            throw createError(404, "Álbum no encontrado para editar.");
         }
         res.status(200).send(album);
     } catch (error) {
-        console.error('Error al editar un álbum:', error);
-        res.status(500).send({ message: "Error interno del servidor al editar álbum." });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al editar álbum.",
+        });
     }
 });
 
@@ -250,12 +251,13 @@ router.delete("/album/:idAlbum", authMiddleware, async (req, res) => {
     try {
         const result = await Album.findByIdAndDelete(req.params.idAlbum);
         if (!result) {
-            return res.status(404).send({ message: "Álbum no encontrado para eliminar." });
+            throw createError(404, "Álbum no encontrado para eliminar.");
         }
         res.status(200).send({ message: "Álbum eliminado exitosamente." });
     } catch (error) {
-        console.error('Error al eliminar álbum:', error);
-        res.status(500).send({ message: "Error interno del servidor al eliminar álbum." });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al eliminar álbum.",
+        });
     }
 });
 
@@ -264,19 +266,20 @@ router.put("/song/:idAlbum", authMiddleware, async (req, res) => {
     try {
         const { title, duration, link } = req.body;
         if (!title || !duration || !link) {
-            return res.status(400).send({ message: "Faltan campos obligatorios para agregar canción." });
+            throw createError(400, "Faltan campos obligatorios para agregar canción.");
         }
 
         let album = await Album.findById(req.params.idAlbum);
         if (!album) {
-            return res.status(404).send({ message: "Álbum no encontrado para agregar canción." });
+            throw createError(404, "Álbum no encontrado para agregar canción.");
         }
         album.songs.push(req.body);
         await album.save(); // Usar .save() en lugar de findByIdAndUpdate para arrays anidados
         res.status(200).send(album);
     } catch (error) {
-        console.error('Error al agregar una canción:', error);
-        res.status(500).send({ message: "Error interno del servidor al agregar canción." });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al agregar canción.",
+        });
     }
 });
 
@@ -285,12 +288,12 @@ router.put("/song/delete/:idAlbum", authMiddleware, async (req, res) => {
     let idSong = req.query.idSong;
     try {
         if (!idSong) {
-            return res.status(400).send({ message: "Debes enviar el idSong." });
+            throw createError(400, "Debes enviar el idSong.");
         }
 
         let album = await Album.findById(req.params.idAlbum);
         if (!album) {
-            return res.status(404).send({ message: "Álbum no encontrado para eliminar canción." });
+            throw createError(404, "Álbum no encontrado para eliminar canción.");
         }
         // Filtra las canciones, manteniendo solo aquellas cuyo _id no coincide con idSong
         let albumUpdatedSongs = album.songs.filter(
@@ -299,7 +302,7 @@ router.put("/song/delete/:idAlbum", authMiddleware, async (req, res) => {
         
         // Verifica si la canción realmente fue eliminada
         if (albumUpdatedSongs.length === album.songs.length) {
-            return res.status(404).send({ message: "Canción no encontrada en el álbum." });
+            throw createError(404, "Canción no encontrada en el álbum.");
         }
 
         album.songs = albumUpdatedSongs;
@@ -307,8 +310,9 @@ router.put("/song/delete/:idAlbum", authMiddleware, async (req, res) => {
 
         res.status(200).send({ message: "Canción eliminada correctamente del álbum." });
     } catch (error) {
-        console.error('Error al eliminar una canción:', error);
-        res.status(500).send({ message: "Error interno del servidor al eliminar canción." });
+        return res.status(error.status || 500).send({
+            message: error.status ? error.message : "Error interno del servidor al eliminar canción.",
+        });
     }
 });
 
